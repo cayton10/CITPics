@@ -72,7 +72,7 @@
         </div>
         <!-- END HERO SECTION  -->
 
-      <section class="site-section">
+    <section class="site-section">
       <div class="container">
         <div class="row justify-content-around">
           <div class="col-md-10 blog-content">
@@ -116,28 +116,21 @@
                 </li>
               </ul>
               <!-- END comment-list -->
-              
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5 comment-count">Leave a comment</h3>
                 <form action="#" class="">
-                  
-                  
-                  
-
                   <div class="form-group">
                     <label for="message">Message</label>
                     <textarea name="" id="message" cols="30" rows="10" class="form-control summary"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn btn-primary" id="login">
+                    <input type="submit" value="Post Comment" class="btn btn-primary" id="post-comment">
                   </div>
-
                 </form>
               </div>
             </div>
 
           </div>
-          
         </div>
       </div>
     </section>

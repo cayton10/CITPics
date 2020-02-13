@@ -5,15 +5,6 @@
     min-width: 0.33vw;
 }
 
-/*MEDIUM DEVICE LOGO PADDING*/
-/*@media (min-width: 768px) { 
-    #CITPics_logo{ padding: 0.5vw;} 
-}*/
-/*LG AND XL DEVICE LOGO PADDING*/
-/*@media (min-width: 992px) {
-    #CITPics_logo{ padding: 0.33vw;} 
-}*/
-
 .hero-section{
     background: linear-gradient(94deg, rgba(255,157,124,1) 0%, rgba(100,169,255,1) 100%);
 }
@@ -72,6 +63,26 @@ h1.register-info{
     transition: .2s ease-in-out;
 }
 
+/* COMMENT */
+
+#post-comment{
+    background:  rgba(100,169,255,1) 100%;
+    transition: .2s ease-in-out;
+}
+
+#post-comment:hover{
+    background: #9CC9FF;
+    color: #FBFF9C;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+
+#post-comment:active{
+    background: rgb(255, 158, 72) !important;
+    color: rgb(3, 221, 255) !important;
+    font-weight: 600;
+    font-style: bold;
+}
 
 
 /*SELECTED LINK*/
