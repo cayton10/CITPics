@@ -9,9 +9,9 @@ $(document).ready(function(){
         var scroll = $(window).scrollTop();
 
         if(scroll >= 1) {
-            $('#userName').addClass('alt-color');
+            $('#userName').addClass('alt-color', 400)
         } else {
-            $('#userName').removeClass('alt-color');
+            $('#userName').removeClass('alt-color', 400);
         }
     });
 });
