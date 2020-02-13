@@ -1,0 +1,396 @@
+/* ************************************************************************************************/
+/* ================================= LANDING INDEX STYLING =====================================*/
+
+#CITPics_logo{
+    min-width: 0.33vw;
+}
+
+/*MEDIUM DEVICE LOGO PADDING*/
+/*@media (min-width: 768px) { 
+    #CITPics_logo{ padding: 0.5vw;} 
+}*/
+/*LG AND XL DEVICE LOGO PADDING*/
+/*@media (min-width: 992px) {
+    #CITPics_logo{ padding: 0.33vw;} 
+}*/
+
+.hero-section{
+    background: linear-gradient(94deg, rgba(255,157,124,1) 0%, rgba(100,169,255,1) 100%);
+}
+.col-12.hero-text-image{
+    margin: 0;
+}
+h1.register-info{
+    color:rgb(162, 162, 162) !important;
+    margin-bottom:1rem;
+    font-size: 2.5rem !important;
+    font-weight: normal;
+}
+
+
+/* ================================ FORMATTING FOR BUTTONS ===============================*/
+
+#register{
+    background:  rgba(255,157,124,1) 0%;
+    transition: .2s ease-in-out;
+}
+
+.row.justify-content-around{
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
+/*PHOTO UPLOAD BROWSE BUTTON*/
+.col-12.browse.btn.btn-primary{
+    background:  rgba(255,157,124,1) 0%;
+    transition: .2s ease-in-out;
+  }
+
+#login{
+    background:  rgba(100,169,255,1) 100%;
+    transition: .2s ease-in-out;
+}
+
+/*MOUSEOVER LINK*/
+#register:hover{
+    background:#FFBA64;
+    color:#64F7FF;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+#login:hover{
+    background: #9CC9FF;
+    color: #FBFF9C;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+
+.col-12.browse.btn.btn-primary:hover{
+    background:#FFBA64;
+    color:#64F7FF;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+
+
+
+/*SELECTED LINK*/
+.btn.btn-outline-white.btn-block:active{
+    background: rgb(255, 158, 72) !important;
+    color: rgb(3, 221, 255) !important;
+    font-weight: 600;
+    font-style: bold;
+}
+
+#login:active{
+    background: rgb(255, 158, 72) !important;
+    color: rgb(3, 221, 255) !important;
+    font-weight: 600;
+    font-style: bold;
+}
+
+/* =============================== GET STARTED BANNER ON INDEX ==========================*/
+
+.col-10.col-md-8.col-lg-6.text-center.text-lg-left.bg-white.py-5.m-2{
+    border-radius: 10px;
+    border-style: solid;
+    border-width: .15em;
+    border-color: rgb(148, 148, 148);
+}
+
+.register-info{
+    font-size: 2.5em !important;
+    color: rgb(36,0,0)!important;
+    text-align: center;
+}
+ul.list-info{
+    text-align: center;
+    list-style-type: none;
+    padding: 0em 1em;
+}
+
+#member{
+    padding-top: 1rem;
+}
+
+#started{
+    padding-top: 1em;
+    text-align: center;
+    color: rgb(36,0,0);
+    font-weight: 800;
+}
+hr{
+    margin-bottom:0;
+    margin-top:0;
+}
+#or{
+    padding-top: .25em;
+    font-size: 1em;
+    color: rgb(87, 87, 87)
+}
+.features{
+    font-style: italic;
+    color: rgb(125, 125, 125);
+}
+
+/* ************************************************************************************************/
+/* ======================================== LOGIN PAGE STYLING ===================================*/
+
+#login-form{
+    border-radius: 10px;
+    border-style: solid;
+    border-width: .15em;
+    border-color: rgb(148, 148, 148);
+    margin-bottom: 3rem;
+}
+
+.text-center.login{
+    color:rgb(162, 162, 162);
+    margin-bottom:1rem;
+}
+
+.form-check.center{
+    margin-bottom:1rem;
+    text-align: center;
+}
+
+.form-actions.col-6.col-md-4{
+    margin:0;
+    background-color: transparent;
+    text-align: center;
+    margin-bottom:.5rem;
+}
+
+hr.col-6.col-md-4.bottom{
+    padding-bottom:1rem;
+}
+
+/* ************************************************************************************************/
+/* ================================== REGISTRATION FORM STYLING===================================*/
+
+.form-group.name{
+    margin-top:2rem;
+}
+
+.form-control.cit {
+    height: 2rem;
+    border-radius: 5px;
+    border: 1px solid #D8E9FF;
+  }
+
+.form-control.summary {
+    border-radius: 5px;
+    border: 1px solid #D8E9FF;
+    }
+
+  .form-control.summary:active,
+  .form-control.summary:focus {
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 .5rem #FFBA64;
+    border: 1px solid #64A9FF;
+  }
+  
+  .form-control.cit:active,
+  .form-control.cit:focus {
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 .5rem #FFBA64;
+    border: 1px solid #64A9FF;
+  }
+
+  .form-group.zip{
+      padding-bottom: 1rem;
+  }
+
+  .col-12.img-title{
+      padding-bottom:1rem;
+  }
+  
+  #file{
+      background: none;
+      border-radius: 5px;
+      border: 1px solid #D8E9FF;
+  }
+
+
+/* ************************************************************************************************/
+/* ======================================== FOOTER STYLING ===================================*/
+
+#badge-logo{
+    max-width: 120px;
+}
+
+#disclaimer{
+    color: rgb(87, 87, 87);
+    background: rgba(52, 52, 52, 0.256);
+    border-radius: 1rem;
+    padding-top:.45rem;
+}
+
+/* ************************************************************************************************/
+/* ======================================== PHOTO BROWSING HEADER ===================================*/
+#header-logo{
+    max-width: 3.75rem;
+    border-right: 1.5px solid black;
+    padding-right: .5rem;
+}
+
+#userName{
+    display:inline;
+    vertical-align: middle;
+    font-family: 'Baumans', cursive, Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+    font-size: 1.5em;
+    color: white;
+}
+/* FOR JQUERY COLOR CHANGE ON SCROLL */
+
+#userName.alt-color{
+    display:inline;
+    vertical-align: middle;
+    font-family: 'Baumans', cursive, Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+    font-size: 1.5em;
+    color: black;
+}
+
+.col-10.userName{
+    display:inline;
+
+}
+
+li > a {
+    font-family: 'Baumans', cursive, Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+    font-size: 1.5em;
+}
+
+/* ************************************************************************************************/
+/* ======================================== PHOTO FEED STYLING ===================================*/
+
+
+
+
+.hero-section.inner-page{
+    padding-top: 70px;
+}
+
+#hero-row-feed{
+    align-items: center!important;
+    padding-top: 10vh;
+}
+
+#gallery-text{
+    font-family: 'Baumans', cursive, Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+    font-size: 5em;
+}
+
+.d-block.mb-4.img{
+    margin-bottom:.75rem!important;
+}
+
+/* IMAGE SUMMARY TEXT */
+
+.row-fluid.align-content-center.image-summary{
+    margin-top: 2rem;
+}
+
+p.image_summary{
+    font-size: .85rem;
+    color: #9fa1a4;
+}
+/*COMMENTS PAGE TEXT FORMATTING*/
+h3.comment-count{
+    font-family: 'Baumans', 'Poppins', Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+}
+h3.userName.comment{
+    font-family: 'Baumans', 'Poppins', Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+}
+
+/* OBJECT FIT MEDIA QUERIES */
+
+/*@media (min-width: ).img-fluid.post{
+    width: 255px;
+    height: 255px;
+    object-fit: contain;
+}
+
+/*XTRA SMALL DEVICE(PHONES) PHOTO POST OBJECT FIT*/
+@media only screen and (max-width: 600px){
+    .img-fluid.post{ 
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    }
+}
+/*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT*/
+@media only screen and (min-width: 600px){
+    .img-fluid.post{ 
+    width: 210px;
+    height: 210px;
+    object-fit: contain;
+    }
+}
+/*MEDIUM DEVICE (LANDSCAPE TABLETS) PHOTO POST OBJECT FIT*/
+@media only screen and (min-width: 768px){
+    .img-fluid.post{ 
+    width: 210px;
+    height: 210px;
+    object-fit: contain;
+    }
+}
+
+/* ===================== LIKE BUTTON STYLING ==================== */
+.col-3.like-button{
+    padding:0;
+}
+.like_button{
+    background: none;
+    border: none;
+    text-align: start;
+
+}
+
+.col-6.likes{
+    text-align: end;
+    padding: 0;
+}
+
+.comment_button{
+    max-width: 50px;
+    float: left;
+}
+.col-3.comment{
+    padding: 0;
+    text-align:end;
+
+}
+
+.img-fluid.comment_button{
+    max-width: 2.2rem;
+    background:none;
+    border:none;
+}
+
+.row-fluid.justify-content-between.align-content-center.social{
+    align-content: center;
+    display: flex;
+}
+
+/* ===================== PHOTO UPLOAD UTILITY ==================== */
+.file {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .img-thumbnail{
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+  }
+
+  .img-preview{
+      padding-bottom: 2rem;
+  }
