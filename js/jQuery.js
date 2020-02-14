@@ -22,31 +22,33 @@ $('#post-comment').click(function(e){
     //STOP NORMAL FORM SUBMISSION FOR jQuery HANDLING
     e.preventDefault();
 
+    //CREATE ARRAY OF LONG MONTH NAMES 
+    var monthLong = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     //GET DATE FUNCTIONS AND ASSIGN TO VARIABLES
     var d = new Date();
  
+    //GET LONG MONTH NAME FROM D.GETMONTH
+    var month = monthLong[d.getMonth()];
     var date = d.getDate();
-    var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
     var year = d.getFullYear();
-    
+    //STORE LONG MONTH, DAY, YEAR
     var dateStr = month + "." + date + "." + year;
    
 
     //POSTS USER COMMENT AND WRAPS COMMENT APPROPRIATELY
     //ASSIGN TEXT AREA CONTENT TO VAR $NEWCOMMENT
     $newComment = $('<p>' + $('#message').val() + '</p>');
+    //PREPEND DATE
     $($newComment).prepend('<div class="meta">' + dateStr + '</div>');
+    //PREPEND USERNAME
     $($newComment).prepend('<h3 class="userName comment">Username</h3>');
     //APPEND CONTENT OF NEW ELEMENT TO COMMENT LIST
-    $('.comment-list').append($newComment);
+    $('.comment-list').append($newComment.hide());
+
     $newComment.wrap('<li class="comment"></li>').wrap('<div class="comment-body"></div>'); 
-    
+        //ANIMATE COMMENT POSTING *THANKS BRIAN*
+        $newComment.show(400);
 
-
-
-
-    //ADD COMMENT TO END OF COMMENTS LIST
-    //$('.comment-list').append('<p>' + $('#message').val() + '</p>');
     
     //RESET TEXT AREA VALUE AFTER SUBMISSION
     $('#message').val('');
