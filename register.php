@@ -52,46 +52,51 @@
               <!-- REGISTRATION FORM -->
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" id="login-form">
-                  <h2 class="text-center login">Register</h2>
-                  <form>
+                  <h2 class="text-center registration">New User Registration</h2>
+                  <!-- registration processing form send to php script -->
+                  <form autocomplete="off" method="POST" action='php_scripts/add_user.php?>'>
                     <!-- NAME GROUP -->
                     <div class="form-group name">
                       <div class="row justify-content-between">
                         <div class="col-12 col-md-6">
-                          <label for="exampleInputFName">First Name</label>
-                          <input type="name" class="form-control cit" id="exampleFirstNameInput" aria-describedby="nameHelp" placeholder="David">
+                          <label for="fName">First Name</label>
+                          <input name="fName" type="text" class="form-control cit" id="exampleFirstNameInput" aria-describedby="nameHelp" placeholder="David" autocomplete="user-first-name" required="required">
                         </div>
                         <div class="col-12 col-md-6">
-                          <label for="exampleInputLName">Last Name</label>
-                          <input type="name" class="form-control cit" id="exampleLastNameInput" aria-describedby="nameHelp" placeholder="Blaine">
+                          <label for="lName">Last Name</label>
+                          <input name="lName" type="text" class="form-control cit" id="exampleLastNameInput" aria-describedby="nameHelp" placeholder="Blaine" autocomplete="user-last-name" required="required">
                         </div>
                       </div>
                     </div>
                     <!-- EMAIL AND PW GROUP -->
                     <div class="form-group email">
                       <div class="row justify-content-between">
-                        <div class="col-12 col-md-6">
-                          <label for="exampleInputEmail1">Email</label>
-                          <input type="email" class="form-control cit" id="exampleInputEmail1" placeholder="doYouLike@Street.Magic">
+                        <div class="col-12 col-md-6 email">
+                          <label for="email">Email</label>
+                          <input name="email" type="text" class="form-control cit" id="exampleInputEmail1" placeholder="doYouLike@Street.Magic" autocomplete="user-email" required="required">
                         </div>
                         <div class="col-12 col-md-6">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control cit" id="exampleInputPassword1" placeholder="**********">
+                          <label for="zipcode">Zip Code</label>
+                          <input name="zip" autocomplete="user-zip" type="number" class="form-control cit" id="exampleInputZip1" placeholder="26452" required="required">
                         </div>
-                      </div>
+                      </div>                   
                     </div>
                     <!-- ZIP CODE GROUP -->
                     <div class="form-group zip">
                       <div class="row justify-content-start">
-                        <div class="col-12 col-md-6">
-                          <label for="exampleInputZip1">Zip Code</label>
-                          <input type="Zip" class="form-control cit" id="exampleInputZip1" placeholder="26452">
+                        <div class="col-12 col-md-6">                 
+                          <label for="password">Password</label>
+                          <input type="password" name="password" class="form-control cit" id="password" placeholder="**********" autocomplete="user-password" required="required">
                         </div>
+                        <div class="col-12 col-md-6">
+                          <label for="confirm-password">Confirm Password</label>
+                          <input type="password" class="form-control cit" id="confirmPassword" placeholder="**********" autocomplete="user-password" required="required">
+                      </div>
                       </div>
                     </div>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
-                        <button id="login" type="submit" class="btn btn-outline-white btn-block">Submit</button>
+                        <input id="register" type="submit" class="btn btn-outline-white btn-block login" value="Register">
                       </div>
                     </div>
                      <!-- HR BREAK FOR SUBMIT / LOGIN -->
@@ -100,7 +105,7 @@
                     </div>
                   <hr class="col-6 col-md-4 bottom">
 
-                  <h2 class="text-center login">Already a Member?</h2>
+                  <h2 class="text-center registration">Already a Member?</h2>
                   <div class="row justify-content-around">
                     <div class="col-6 col-md-4">
                       <a id="login" class="btn btn-outline-white btn-block"
@@ -125,7 +130,8 @@
   </div> <!-- .site-wrap -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
+  <!-- Recommended jQuery Inclusion -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Vendor JS Files -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/jquery/jquery-migrate.min.js"></script>
@@ -138,6 +144,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
+
 
 </body>
 

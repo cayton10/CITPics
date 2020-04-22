@@ -18,6 +18,23 @@ h1.register-info{
     font-weight: normal;
 }
 
+/*
+ * ─────────────────────────────────── HIDE NUMBER INPUT FIELD COUNTER ARROWS ─────
+ */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
 
 /* ================================ FORMATTING FOR BUTTONS ===============================*/
 
@@ -36,6 +53,17 @@ h1.register-info{
     background:  rgba(255,157,124,1) 0%;
     transition: .2s ease-in-out;
   }
+
+.login{
+    background:  rgba(100,169,255,1) 100%;
+    transition: .2s ease-in-out;
+}
+.login:hover{
+    background: #9CC9FF;
+    color: #FBFF9C;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
 
 #login{
     background:  rgba(100,169,255,1) 100%;
@@ -155,7 +183,7 @@ hr{
     margin-bottom: 3rem;
 }
 
-.text-center.login{
+.text-center.registration{
     color:rgb(162, 162, 162);
     margin-bottom:1rem;
 }
@@ -404,4 +432,8 @@ h3.userName.comment{
 
   .img-preview{
       padding-bottom: 2rem;
+  }
+
+  .col-12.email{
+      margin-bottom: 10px;
   }

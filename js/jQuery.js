@@ -16,7 +16,8 @@ $(document).ready(function(){
     });
 });
 
-//APPEND COMMENTS TO COMMENT PAGE DYNAMICALLY
+/* ------------------------- APPEND COMMENT FUNCTION ------------------------ */
+
 $('#post-comment').click(function(e){
 
     //STOP NORMAL FORM SUBMISSION FOR jQuery HANDLING

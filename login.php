@@ -82,19 +82,19 @@
                       <label class="remember-check-label" for="exampleCheck1">Remember Me</label>
                     </div>
                      <!-- HR BREAK FOR REGISTER / LOGIN -->
-                  <hr class="col-6 col-md-4">
-                    <div class="row justify-content-around or">
-                        <h3 id="or">OR</h3>
-                    </div>
-                  <hr class="col-6 col-md-4 bottom">
+                    <hr class="col-6 col-md-4">
+                      <div class="row justify-content-around or">
+                          <h3 id="or">OR</h3>
+                      </div>
+                    <hr class="col-6 col-md-4 bottom">
 
-                  <h2 class="text-center login">Not a member?</h2>
-                  <div class="row justify-content-around">
-                    <div class="col-6 col-md-4">
-                      <a id="register" class="btn btn-outline-white btn-block"
-                             href="register.php" role="button">Register</a>
+                    <h2 class="text-center login">Not a member?</h2>
+                    <div class="row justify-content-around">
+                      <div class="col-6 col-md-4">
+                        <a id="register" class="btn btn-outline-white btn-block"
+                              href="register.php" role="button">Register</a>
+                      </div>
                     </div>
-                  </div>
                   </form>
                   <!-- END LOGIN FORM -->
                 </div>
