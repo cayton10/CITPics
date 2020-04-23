@@ -66,7 +66,7 @@
                   }
                   ?>
                   <!-- registration processing form send to php script -->
-                  <form autocomplete="off" method="POST" action='php_scripts/add_user.php'>
+                  <form autocomplete="off" method="POST" action='php_scripts/add_user.php' id="registrationForm">
                     <!-- NAME GROUP -->
                     <div class="form-group name">
                       <div class="row justify-content-between">
@@ -103,6 +103,9 @@
                         <div class="col-12 col-md-6">
                           <label for="confirm-password">Confirm Password</label>
                           <input type="password" class="form-control cit" id="confirmPassword" placeholder="**********" autocomplete="user-password" required="required">
+                      </div>
+                      <div class="col-12 passwordError text-center" id="passwordError">
+                        <p>Passwords do not match. Check passwords and try again.</p>
                       </div>
                       </div>
                     </div>
@@ -156,6 +159,8 @@
 
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
+  <!-- Include custom js for error handling -->
+  <script src="js/jQuery.js"></script>
 
 
 </body>

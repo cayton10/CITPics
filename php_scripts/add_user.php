@@ -12,11 +12,8 @@
     $email = htmlspecialchars(trim($_POST['email']));
     $zipCode = htmlspecialchars(trim($_POST['zipCode']));
     $password = htmlspecialchars(trim($_POST['password']));
-    echo $fName;
-    echo $lName;
-    echo $email;
-    echo $zipCode;
-    echo $password;
+    //Encrypt password to pass into DB using md5() function
+    $password = md5($password);
     //Define check for admin
     $adminCheck;
     if($email != "admin@citpics.com"){

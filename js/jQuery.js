@@ -14,6 +14,9 @@ $(document).ready(function(){
             $('#userName').removeClass('alt-color', 400);
         }
     });
+
+    /****************** HIDE ERROR HANDLING FOR PW CONFIRMATION */
+    $('#passwordError').hide();
 });
 
 /* ------------------------- APPEND COMMENT FUNCTION ------------------------ */
@@ -54,5 +57,42 @@ $('#post-comment').click(function(e){
     //RESET TEXT AREA VALUE AFTER SUBMISSION
     $('#message').val('');
 
+});
+
+
+/** ************** CHECK VALUE OF CONFIRM PASSWORD *********** */
+
+$('#registrationForm').submit(function(e){
+    //Store password values
+    var password = $('#password').val();
+    var confirmPassword = $('#confirmPassword').val();
+    //If match is found
+
+    if(password == confirmPassword)
+    {
+        //Proceed with normal function... run php
+        return true;
+    }
+    else
+    {
+        //Prevent form from submitting
+        e.preventDefault(e);
+        //Show error div
+        $('#passwordError').show(300);
+        //Remove values if incorrect
+        $('#password').val('');
+        $('#confirmPassword').val('');
+        return false;
+    }
+});
+
+/** ******** HIDE ERROR ON PW FIELD CLICK ******************** */
+
+$('#password').click(function()
+{
+    if($('#passwordError').is(':visible'))
+    {
+       $('#passwordError').hide(200); 
+    };
 });
 

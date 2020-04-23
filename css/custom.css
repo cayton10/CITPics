@@ -437,3 +437,19 @@ h3.userName.comment{
   .col-12.email{
       margin-bottom: 10px;
   }
+
+  /** PASSWORD ERROR HANDLING DIV **/
+
+  #passwordError
+  {
+      background: rgb(225, 225, 225);
+      color: rgb(239, 88, 88);
+      margin-top: 15px;
+      border: solid 0.25px rgb(164, 164, 164);
+  }
+
+  /* Fix margin of paragraph text w/in Error div */
+  #passwordError > p {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+  }

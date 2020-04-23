@@ -1,3 +1,57 @@
+<?
+  require_once('dbConfig/config.php');
+
+  if(isset($_POST))
+  {
+    //Create session var to track user login attempts
+    //Set/reset login attempt count on _POST
+    $_SESSION['loginAttempt'] = 0;
+    //Create session var to store u_FName from DB
+    $_SESSION['name'];
+    //Assign variable values with posted credentials
+    $email = htmlspecialchars(trim($_POST['email']));
+    $password = htmlspecialchars((trim($_POST['password'])));
+    //Encrypt password
+    $password = md5($password);
+
+    //If credentials are valid, redirect to feed(gallery). Else show appropriate error
+    //Query user table
+    $query = "SELECT u_FName, u_isAdmin FROM user WHERE u_Email=? AND u_Password=?";
+
+    //Prep stmt
+    $stmt = $db->prepare($query);
+    //Bind params
+    $stmt->bind_param('ss', $email, $password);
+    $stmt->execute();
+    $stmt->store_result();
+    //If stored result number of rows = 1, this is our valid user
+    if($stmt->num_rows == 1)
+    {
+      //Bind results on success
+      $stmt->bind_result($name, $isAdmin);
+      //Store u_FName into session variable for later use
+      $_SESSION['name'] = $name;
+      //Check u_isAdmin value
+      if($isAdmin != 1)
+      {
+        //If 0, send to user to photo gallery
+        header('location: feed.php');
+      }
+      else
+      {
+        //If 1, send to admin utility
+        header('location: admin.php');
+      }
+    }
+    else  //Count login attempt and send to form for error handling
+    {
+      $_SESSION['loginAttempt'] = 1;
+      header('location: login.php#loginForm');
+    }
+    
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +108,7 @@
           <div class="row align-items-center">
             <div class="col-12 hero-text-image">
               <!--SITE LOGO-->
-              <div class="row justify-content-around" id="logo"><!-- BANNER FOR SITE LOGO AND REGISTRATION BUTTON -->
+              <div class="row justify-content-around" id="logo">
                 <div class="col-8 col-md-6 col-lg-5 col-xl-4"> 
                     <img class="img" src="img/cit_logo_white.svg" id="CITPics-logo-white" alt="custom site logo"/>
                 </div>
@@ -62,15 +116,16 @@
               <!-- LOGIN FORM -->
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" data-aos="fade-right" id="login-form">
-                  <h2 class="text-center login">Member Login</h2>
-                  <form>
+                  <h2 class="text-center registration">Member Login</h2>
+                  <!-- SEND POST ACTION TO SELF TO MINIMIZE REDIRECTS -->
+                  <form method="POST" action='<?$_SERVER['PHP_SELF'];?>' id="loginForm">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control cit" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="timmybob123@mailer.mail">
+                      <label for="email">Email Address</label>
+                      <input name="email" type="email" class="form-control cit" id="email" aria-describedby="emailHelp" placeholder="timmybob123@mailer.mail">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control cit" id="exampleInputPassword1" placeholder="**********">
+                      <label for="password">Password</label>
+                      <input name="password" type="password" class="form-control cit" id="exampleInputPassword1" placeholder="**********">
                     </div>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
@@ -88,7 +143,7 @@
                       </div>
                     <hr class="col-6 col-md-4 bottom">
 
-                    <h2 class="text-center login">Not a member?</h2>
+                    <h2 class="text-center registration">Not a member?</h2>
                     <div class="row justify-content-around">
                       <div class="col-6 col-md-4">
                         <a id="register" class="btn btn-outline-white btn-block"
@@ -113,7 +168,7 @@
   </div> <!-- .site-wrap -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Vendor JS Files -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/jquery/jquery-migrate.min.js"></script>

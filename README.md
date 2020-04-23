@@ -150,4 +150,8 @@ For local development, I set up a MAMP suite and have become familiar with chang
 The application connects to a database on the remote server that I'll be pushing the final product to. In order to facilitate local development and test database connections, I used phpMyAdmin within the MAMP suite to replicate the same database structure as outlined in the project description above. 
 
 ## Database Connection:
+4.22.2020
+This is the first application I've built utilizing DB functionality. Setting up a local DB Server with the credentials expected to be used on our "production" server threw me for a loop. It took some time and digging around to understand how configs are structured locally and where to find the information I needed to get things working. 
+
+Have successfully entered registration information for users and adding rows to the 'user' table in the DB.... A satisfying feeling. Next is to create the ajax calls required to test input values against the DB for error handling. Once that's done, login and registration should be a breeze to finish. 
 

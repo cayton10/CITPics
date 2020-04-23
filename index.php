@@ -1,3 +1,6 @@
+<?
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,6 +146,8 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+  <!-- Recommended jQuery Inclusion -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Vendor JS Files -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/jquery/jquery-migrate.min.js"></script>
