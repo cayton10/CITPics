@@ -442,7 +442,7 @@ h3.userName.comment{
 
   #passwordError
   {
-      background: rgb(225, 225, 225);
+      background: rgb(253, 172, 147);
       color: rgb(239, 88, 88);
       margin-top: 15px;
       border: solid 0.25px rgb(164, 164, 164);
@@ -452,4 +452,20 @@ h3.userName.comment{
   #passwordError > p {
       margin-top: 1rem;
       margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: #a70000;
+  }
+
+  /* Color code exclamations for error handling spans*/
+  #error
+  {
+      color: #a70000;
+      font-weight: bold;
+      font-size: 1.25;
+  }
+
+  /* STYLE PLACEHOLDERS FOR INPUT FIELDS */
+
+  ::placeholder{
+      color: rgb(206, 206, 206);
   }

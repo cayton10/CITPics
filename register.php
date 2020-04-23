@@ -105,7 +105,7 @@
                           <input type="password" class="form-control cit" id="confirmPassword" placeholder="**********" autocomplete="user-password" required="required">
                       </div>
                       <div class="col-12 passwordError text-center" id="passwordError">
-                        <p>Passwords do not match. Check passwords and try again.</p>
+                        <p><span id="error">!!!!</span> Passwords do not match. Check passwords and try again <span id="error">&#161;&#161;&#161;&#161;</p>
                       </div>
                       </div>
                     </div>

@@ -1,7 +1,7 @@
 <?
   require_once('dbConfig/config.php');
 
-  if(isset($_POST))
+  if(!empty($_POST))
   {
     //Create session var to track user login attempts
     //Set/reset login attempt count on _POST
@@ -10,7 +10,7 @@
     $_SESSION['name'];
     //Assign variable values with posted credentials
     $email = htmlspecialchars(trim($_POST['email']));
-    $password = htmlspecialchars((trim($_POST['password'])));
+    $password = htmlspecialchars(trim($_POST['password']));
     //Encrypt password
     $password = md5($password);
 
@@ -25,31 +25,31 @@
     $stmt->execute();
     $stmt->store_result();
     //If stored result number of rows = 1, this is our valid user
+  
     if($stmt->num_rows == 1)
     {
       //Bind results on success
       $stmt->bind_result($name, $isAdmin);
+      //Get record
+      $stmt->fetch();
       //Store u_FName into session variable for later use
       $_SESSION['name'] = $name;
+      //Store admin value for control flow in redirection
+      $_SESSION['isAdmin'] = $isAdmin;
       //Check u_isAdmin value
-      if($isAdmin != 1)
-      {
-        //If 0, send to user to photo gallery
-        header('location: feed.php');
+      if($isAdmin == 0)
+      { //If 0, send to user to photo gallery
+        header('location:feed.php');
       }
       else
       {
-        //If 1, send to admin utility
-        header('location: admin.php');
-      }
+        header('location:admin.php');
+      }       
     }
-    else  //Count login attempt and send to form for error handling
+    else
     {
-      $_SESSION['loginAttempt'] = 1;
-      header('location: login.php#loginForm');
+      $error = "Not good information";
     }
-    
-
   }
 ?>
 <!DOCTYPE html>
@@ -121,12 +121,22 @@
                   <form method="POST" action='<?$_SERVER['PHP_SELF'];?>' id="loginForm">
                     <div class="form-group">
                       <label for="email">Email Address</label>
-                      <input name="email" type="email" class="form-control cit" id="email" aria-describedby="emailHelp" placeholder="timmybob123@mailer.mail">
+                      <input name="email" type="email" class="form-control cit" id="email" 
+                              aria-describedby="emailHelp" placeholder="timmybob123@mailer.mail" value="<?=$_POST['email'];?>">
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
                       <input name="password" type="password" class="form-control cit" id="exampleInputPassword1" placeholder="**********">
                     </div>
+                    <? if ($error != '')
+                          {
+                            echo "<div id='error'>". $error . "</div>";
+                          }
+                          else
+                          {
+                            echo '';
+                          }
+                    ?>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
                         <button id="login" type="submit" class="btn btn-outline-white btn-block">Submit</button>

@@ -1,3 +1,7 @@
+<?
+session_start();
+require_once('dbConfig/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

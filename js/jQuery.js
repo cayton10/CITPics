@@ -60,6 +60,14 @@ $('#post-comment').click(function(e){
 });
 
 
+/** 
+ * USE THIS FUNCTION TO CHECK VALUE OF BOTH PW FIELDS
+ * HELPS ELIMINATE USER ERRORS IN CREATING ACCOUNTS AND FORGETTING
+ * OR ENTERING AN 'OFF THE WALL' PASSWORD. STOPS FORM SUBMISSION IF
+ * PW INPUT FIELD VALUES DO NOT MATCH. IF MATCH IS FOUND, CONTINUE WITH DEFAULT
+ * FORM ACTION
+ */
+
 /** ************** CHECK VALUE OF CONFIRM PASSWORD *********** */
 
 $('#registrationForm').submit(function(e){
@@ -67,7 +75,6 @@ $('#registrationForm').submit(function(e){
     var password = $('#password').val();
     var confirmPassword = $('#confirmPassword').val();
     //If match is found
-
     if(password == confirmPassword)
     {
         //Proceed with normal function... run php
@@ -78,7 +85,7 @@ $('#registrationForm').submit(function(e){
         //Prevent form from submitting
         e.preventDefault(e);
         //Show error div
-        $('#passwordError').show(300);
+        $('#passwordError').show(400);
         //Remove values if incorrect
         $('#password').val('');
         $('#confirmPassword').val('');

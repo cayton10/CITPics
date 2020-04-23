@@ -155,3 +155,7 @@ This is the first application I've built utilizing DB functionality. Setting up 
 
 Have successfully entered registration information for users and adding rows to the 'user' table in the DB.... A satisfying feeling. Next is to create the ajax calls required to test input values against the DB for error handling. Once that's done, login and registration should be a breeze to finish. 
 
+### Registration Form
+4.23.2020 
+Used jQuery to test password values and display appropriate error handling
+
