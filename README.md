@@ -157,5 +157,9 @@ Have successfully entered registration information for users and adding rows to 
 
 ### Registration Form
 4.23.2020 
-Used jQuery to test password values and display appropriate error handling
+Used jQuery to test password values and display appropriate error handling. Still need to run ajax call on page load to prevent users from entering the same email information
+
+### Login Form
+4.23.2020
+Form is functional. Sends user to appropriate page (admin or gallery) depending on credentials returned from DB. Trying to figure out how to incorporate jQuery error handling.
 
