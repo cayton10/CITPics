@@ -1,3 +1,6 @@
+<?
+  session_start();
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,8 +56,17 @@
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" id="login-form">
                   <h2 class="text-center registration">New User Registration</h2>
+                  <?
+                  //PHP Script checks session variable for registerAttempt
+                  //If registerAttempt > 0, show div that informs user that something went wrong.
+                  if($_SESSION['registerAttempt'] > 0)
+                  {
+                    echo "<div class='alert alert-danger' role='alert'><p>Something went wrong... Please check your registration credentials
+                          or contact an administrator.</p</div>";
+                  }
+                  ?>
                   <!-- registration processing form send to php script -->
-                  <form autocomplete="off" method="POST" action='php_scripts/add_user.php?>'>
+                  <form autocomplete="off" method="POST" action='php_scripts/add_user.php'>
                     <!-- NAME GROUP -->
                     <div class="form-group name">
                       <div class="row justify-content-between">
@@ -76,8 +88,8 @@
                           <input name="email" type="text" class="form-control cit" id="exampleInputEmail1" placeholder="doYouLike@Street.Magic" autocomplete="user-email" required="required">
                         </div>
                         <div class="col-12 col-md-6">
-                          <label for="zipcode">Zip Code</label>
-                          <input name="zip" autocomplete="user-zip" type="number" class="form-control cit" id="exampleInputZip1" placeholder="26452" required="required">
+                          <label for="zipCode">Zip Code</label>
+                          <input name="zipCode" autocomplete="user-zip" type="number" class="form-control cit" id="exampleInputZip1" placeholder="26452" required="required">
                         </div>
                       </div>                   
                     </div>
