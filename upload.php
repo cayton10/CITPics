@@ -1,41 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<?
+  session_start();
+  require_once('dbConfig/config.php');
+  require_once('header.php');
+?>
 
-<head>
-  <meta charset="utf-8">
-  <title>Register</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700|Roboto:300,400,700&display=swap"
-    rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
-  <link href="vendor/aos/aos.css" rel="stylesheet">
-  <link href="vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="css/style.css" rel="stylesheet">
-  
-  <!-- CUSTOM CSS FILE-->
-  <link href="css/custom.css" rel="stylesheet">
-
-
-</head>
-<body>
   <div class="site-wrap">
-
     <!--BEGIN MAIN-->
     <main id="main">
       <div class="hero-section">
@@ -43,17 +12,11 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-12 hero-text-image">
-              <!--SITE LOGO-->
-              <div class="row justify-content-around" id="logo"><!-- BANNER FOR SITE LOGO AND REGISTRATION BUTTON -->
-                <div class="col-8 col-md-6 col-lg-5 col-xl-4"> 
-                    <img class="img" src="img/cit_logo_white.svg" id="CITPics-logo-white" alt="custom site logo"/>
-                </div>
-              </div>
-              <!-- REGISTRATION FORM -->
+              <!-- UPLOAD FORM -->
               <div class="row justify-content-around align-items-center">
-                <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" id="login-form">
+                <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5 uploadForm" id="login-form">
                   <h2 class="text-center login">Upload Photo</h2>
-                  <form>
+                  <form id="uploadForm" method="POST" action=''>
                       <!-- UPLOAD IMAGE AND PREVIEW -->
                       <div class="row-fluid mt-4">
                         <div class="col-12">

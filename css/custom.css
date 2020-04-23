@@ -278,7 +278,7 @@ hr.col-6.col-md-4.bottom{
     vertical-align: middle;
     font-family: 'Baumans', cursive, Arial, Helvetica, sans-serif;
     text-transform: lowercase;
-    font-size: 1.5em;
+    font-size: 2rem;
     color: white;
 }
 /* FOR JQUERY COLOR CHANGE ON SCROLL */
@@ -436,6 +436,10 @@ h3.userName.comment{
 
   .col-12.email{
       margin-bottom: 10px;
+  }
+
+  .uploadForm{
+      margin-top: 6rem;
   }
 
   /** PASSWORD ERROR HANDLING DIV **/

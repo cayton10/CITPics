@@ -130,12 +130,12 @@
                     </div>
                     <? if ($error != '')
                           {
-                            echo "<div id='error'>". $error . "</div>";
+                            echo "<div class='col-12 passwordError text-center' id='passwordError'>
+                            <p><span id='error'>!!!!</span> Invalid username and/or password 
+                            <span id='error'>&#161;&#161;&#161;&#161;</p>
+                            </div>";
                           }
                           else
-                          {
-                            echo '';
-                          }
                     ?>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
