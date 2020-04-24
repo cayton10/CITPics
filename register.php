@@ -1,6 +1,6 @@
 <?
   session_start();
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,11 +85,15 @@
                       <div class="row justify-content-between">
                         <div class="col-12 col-md-6 email">
                           <label for="email">Email</label>
-                          <input name="email" type="text" class="form-control cit" id="exampleInputEmail1" placeholder="doYouLike@Street.Magic" autocomplete="user-email" required="required">
+                          <input name="email" type="text" class="form-control cit" id="registerEmail" placeholder="doYouLike@Street.Magic" autocomplete="user-email" required="required">
                         </div>
                         <div class="col-12 col-md-6">
                           <label for="zipCode">Zip Code</label>
-                          <input name="zipCode" autocomplete="user-zip" type="number" class="form-control cit" id="exampleInputZip1" placeholder="26452" required="required">
+                          <input name="zipCode" autocomplete="user-zip" type="number" class="form-control cit" 
+                                  id="exampleInputZip1" placeholder="26452" required="required" minlength="5" maxlength="5">
+                        </div>
+                        <div class="col-12 emailError text-center" id="emailError">
+                          <p>That email is already in use. <a class='link' href="login.php">Login</a> or try another email address.</p>
                         </div>
                       </div>                   
                     </div>
@@ -103,10 +107,10 @@
                         <div class="col-12 col-md-6">
                           <label for="confirm-password">Confirm Password</label>
                           <input type="password" class="form-control cit" id="confirmPassword" placeholder="**********" autocomplete="user-password" required="required">
-                      </div>
-                      <div class="col-12 passwordError text-center" id="passwordError">
-                        <p><span id="error">!!!!</span> Passwords do not match. Check passwords and try again <span id="error">&#161;&#161;&#161;&#161;</p>
-                      </div>
+                        </div>
+                        <div class="col-12 passwordError text-center" id="passwordError">
+                          <p><span id="error">!!!!</span> Passwords do not match. Check passwords and try again <span id="error">&#161;&#161;&#161;&#161;</p>
+                        </div>
                       </div>
                     </div>
                     <div class="row justify-content-around">
@@ -142,27 +146,6 @@
     <?php
     require_once("footer.php");
     ?>
-  </div> <!-- .site-wrap -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-  <!-- Recommended jQuery Inclusion -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Vendor JS Files -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/jquery/jquery-migrate.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="vendor/easing/easing.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
-  <script src="vendor/sticky/sticky.js"></script>
-  <script src="vendor/aos/aos.js"></script>
-  <script src="vendor/owlcarousel/owl.carousel.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="js/main.js"></script>
-  <!-- Include custom js for error handling -->
-  <script src="js/jQuery.js"></script>
-
-
 </body>
 
 </html>

@@ -134,35 +134,10 @@
         </div>
       </div>
     </section>
-      
-
-      
-
-
     </main>
-    <footer>
+   
       <?
         require_once("footer.php");
       ?>
-    </footer>
-  </div> <!-- .site-wrap -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- Vendor JS Files -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/jquery/jquery-migrate.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="vendor/easing/easing.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
-  <script src="vendor/sticky/sticky.js"></script>
-  <script src="vendor/aos/aos.js"></script>
-  <script src="vendor/owlcarousel/owl.carousel.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="js/main.js"></script>
-  <!-- CUSTOM JQUERY FILE -->
-    <script src="js/jQuery.js"></script>
-  <!-- JQUERY UI FILE FOR CLASS ANIMATION TRANSISITONS -->
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-
   </body>
 </html>

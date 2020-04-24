@@ -460,6 +460,21 @@ h3.userName.comment{
       color: #a70000;
   }
 
+  #emailError
+  {
+    background: rgb(253, 172, 147);
+    color: rgb(239, 88, 88);
+    margin-top: 15px;
+    border: solid 0.25px rgb(164, 164, 164);
+  }
+
+  #emailError > p{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #a70000;
+  }
+
   /* Color code exclamations for error handling spans*/
   #error
   {
@@ -472,4 +487,10 @@ h3.userName.comment{
 
   ::placeholder{
       color: rgb(206, 206, 206);
+  }
+
+  .link{
+      color: #e2e3e4;
+      text-decoration: underline;
+
   }

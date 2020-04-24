@@ -150,16 +150,43 @@ For local development, I set up a MAMP suite and have become familiar with chang
 The application connects to a database on the remote server that I'll be pushing the final product to. In order to facilitate local development and test database connections, I used phpMyAdmin within the MAMP suite to replicate the same database structure as outlined in the project description above. 
 
 ## Database Connection:
-4.22.2020
+##### 4.22.2020
 This is the first application I've built utilizing DB functionality. Setting up a local DB Server with the credentials expected to be used on our "production" server threw me for a loop. It took some time and digging around to understand how configs are structured locally and where to find the information I needed to get things working. 
 
 Have successfully entered registration information for users and adding rows to the 'user' table in the DB.... A satisfying feeling. Next is to create the ajax calls required to test input values against the DB for error handling. Once that's done, login and registration should be a breeze to finish. 
 
 ### Registration Form
-4.23.2020 
+##### 4.23.2020 
 Used jQuery to test password values and display appropriate error handling. Still need to run ajax call on page load to prevent users from entering the same email information
+
+##### 4.24.2020
+Set up ajax call to query database for all user emails 
+```javascript 
+.on('change', function()) 
+``` 
+of registration email. I first tried to set up the call by having it nested in the form submission function, but this got extremely hairy. The only work around was to set
+```javascript
+async: false;
+```
+in the ajax call parameters. This defeats the purpose of ajax, right!?
+KISS <-
 
 ### Login Form
 4.23.2020
-Form is functional. Sends user to appropriate page (admin or gallery) depending on credentials returned from DB. Trying to figure out how to incorporate jQuery error handling.
+Form is functional. Sends user to appropriate page (admin or gallery) depending on credentials returned from DB. Trying to figure out how to incorporate jQuery error handling on Login Form (php generates content on error here). Wondering how to use fade animations on these.
 
+
+
+
+
+### Comments
+4.24.2020 
+For setting timestamps, can use:
+
+```php
+<?
+date_default_timezone_set();
+?>
+```
+
+Found this in php book.

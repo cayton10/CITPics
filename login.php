@@ -122,11 +122,11 @@
                     <div class="form-group">
                       <label for="email">Email Address</label>
                       <input name="email" type="email" class="form-control cit" id="email" 
-                              aria-describedby="emailHelp" placeholder="timmybob123@mailer.mail" value="<?=$_POST['email'];?>">
+                              aria-describedby="emailHelp" placeholder="tony_stark@starkindustries.com" value="<?=$_POST['email'];?>">
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input name="password" type="password" class="form-control cit" id="exampleInputPassword1" placeholder="**********">
+                      <input name="password" type="password" class="form-control cit" id="password" placeholder="**********">
                     </div>
                     <? if ($error != '')
                           {
@@ -136,6 +136,9 @@
                             </div>";
                           }
                           else
+                          {
+                            echo '';
+                          }
                     ?>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
@@ -191,6 +194,8 @@
 
   <!-- Template Main JS File -->
   <script src="js/main.js"></script>
+  <!-- Include custom JS -->
+  <script src="js/jQuery.js"></script>
 
 </body>
 
