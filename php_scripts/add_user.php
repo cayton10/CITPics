@@ -1,4 +1,5 @@
 <?
+  session_start();
   require_once('../dbConfig/config.php');
 
   if(!empty($_POST))
@@ -20,6 +21,8 @@
         $adminCheck = 0;
     }
     echo $adminCheck;
+    //Set session variable for name on registration redirect
+    $_SESSION['name'] = $fName;
 
     //Prepare query just like B. Morgan told me to WRITE to the DB
     $query = "INSERT INTO user VALUES (?,?,?,?,?,?,?)";

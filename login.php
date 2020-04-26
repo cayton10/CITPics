@@ -1,57 +1,3 @@
-<?
-  require_once('dbConfig/config.php');
-
-  if(!empty($_POST))
-  {
-    //Create session var to track user login attempts
-    //Set/reset login attempt count on _POST
-    $_SESSION['loginAttempt'] = 0;
-    //Create session var to store u_FName from DB
-    $_SESSION['name'];
-    //Assign variable values with posted credentials
-    $email = htmlspecialchars(trim($_POST['email']));
-    $password = htmlspecialchars(trim($_POST['password']));
-    //Encrypt password
-    $password = md5($password);
-
-    //If credentials are valid, redirect to feed(gallery). Else show appropriate error
-    //Query user table
-    $query = "SELECT u_FName, u_isAdmin FROM user WHERE u_Email=? AND u_Password=?";
-
-    //Prep stmt
-    $stmt = $db->prepare($query);
-    //Bind params
-    $stmt->bind_param('ss', $email, $password);
-    $stmt->execute();
-    $stmt->store_result();
-    //If stored result number of rows = 1, this is our valid user
-  
-    if($stmt->num_rows == 1)
-    {
-      //Bind results on success
-      $stmt->bind_result($name, $isAdmin);
-      //Get record
-      $stmt->fetch();
-      //Store u_FName into session variable for later use
-      $_SESSION['name'] = $name;
-      //Store admin value for control flow in redirection
-      $_SESSION['isAdmin'] = $isAdmin;
-      //Check u_isAdmin value
-      if($isAdmin == 0)
-      { //If 0, send to user to photo gallery
-        header('location:feed.php');
-      }
-      else
-      {
-        header('location:admin.php');
-      }       
-    }
-    else
-    {
-      $error = "Not good information";
-    }
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -117,8 +63,7 @@
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" data-aos="fade-right" id="login-form">
                   <h2 class="text-center registration">Member Login</h2>
-                  <!-- SEND POST ACTION TO SELF TO MINIMIZE REDIRECTS -->
-                  <form method="POST" action='<?$_SERVER['PHP_SELF'];?>' id="loginForm">
+                  <form method="POST" action="php_scripts/login_user.php" id="loginForm">
                     <div class="form-group">
                       <label for="email">Email Address</label>
                       <input name="email" type="email" class="form-control cit" id="email" 
@@ -128,18 +73,6 @@
                       <label for="password">Password</label>
                       <input name="password" type="password" class="form-control cit" id="password" placeholder="**********">
                     </div>
-                    <? if ($error != '')
-                          {
-                            echo "<div class='col-12 passwordError text-center' id='passwordError'>
-                            <p><span id='error'>!!!!</span> Invalid username and/or password 
-                            <span id='error'>&#161;&#161;&#161;&#161;</p>
-                            </div>";
-                          }
-                          else
-                          {
-                            echo '';
-                          }
-                    ?>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
                         <button id="login" type="submit" class="btn btn-outline-white btn-block">Submit</button>

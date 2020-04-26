@@ -39,7 +39,6 @@ $('#post-comment').click(function(e){
     //STORE LONG MONTH, DAY, YEAR
     var dateStr = month + "." + date + "." + year;
    
-
     //POSTS USER COMMENT AND WRAPS COMMENT APPROPRIATELY
     //ASSIGN TEXT AREA CONTENT TO VAR $NEWCOMMENT
     $newComment = $('<p>' + $('#message').val() + '</p>');
@@ -88,6 +87,7 @@ $(document).ready(function(){
             {
                 url: "ajax/pullEmail.php",
                 dataType: "json",
+                method: "POST",
                 success: function(data)
                 {
                     //On success, loop through all emails
@@ -98,6 +98,7 @@ $(document).ready(function(){
                         {
                             $('#emailError').show(400);
                             existingEmail = value.email;
+                            $('#register').attr("disabled", "disabled");
                             return false;
                         }
                     });
@@ -124,7 +125,8 @@ $(document).ready(function(){
             //Proceed with normal function... run php
             return true;
         }
-        else if (password != confirmPassword || $('#emailError').is(':visible'))
+        //If passwords don't match or email is already taken,
+        else if (password != confirmPassword)
         {
             //Prevent form from submitting
             e.preventDefault(e);
@@ -139,7 +141,6 @@ $(document).ready(function(){
 });
 
 /** HIDE ERROR FIELDS ON CLICKING  */
-
 $('#password').click(function()
 {
     if($('#passwordError').is(':visible'))
@@ -153,7 +154,94 @@ $('#registerEmail').click(function()
     if($('#emailError').is(':visible'))
     {
         //Reset value of email once error message is shown
-        $('#emailError').val('');
+        $('#registerEmail').val('');
         $('#emailError').hide(200);
+        $('#register').removeAttr("disabled");
     }
+        
+    
 });
+
+
+
+
+
+
+    /**LOGIN FORM ERROR HANDLING AND FIELD VALIDATION
+     * 
+     * FUNCTION VALIDATES LOGIN CREDENTIALS AGAINST DB USING AJAX
+     * TO PREVENT PAGE RELOAD AND INCREASE UX
+     */
+
+    $(document).ready(function(){
+        //On login form submission,
+        $('#loginForm').on('submit', function (e)
+        {   //Prevent default action
+            e.preventDefault(e);
+            //Store user entered data in vars
+            var userEmail = $('#email').val();
+            var userPass = $('#password').val();
+            sendTo = window.location;
+            //Start ajax call for sending info to be checked against 'user' table in DB
+            $.ajax(
+                {
+                    //Validate user login against database
+                    //Set session variables 
+                    url: "ajax/validateLogin.php",
+                    method: "POST",
+                    data: {email: userEmail ,password: userPass},
+                    success: function(response)
+                    {
+                        //If a positive response is returned
+                       if(response.success)
+                       {
+                           console.log(response.message);
+                           //Submit the form as part of success function
+                            $('#loginForm').submit()
+                       }
+                       else
+                       {
+                           //Log appropriate error to console
+                           console.log(response.error);
+
+                       } 
+                       
+                    },
+                    //If error with ajax call, alert user.
+                    error: function(error)
+                    {
+                        alert(error);
+                    }
+                }
+                )
+        });
+        /** CHECK PASSWORD CONFIRM PASSWORD VALIDITY FUNCTION */
+    
+        $('#registrationForm').submit(function(e){
+      
+            //Store password values
+            var password = $('#password').val();
+            var confirmPassword = $('#confirmPassword').val();
+                
+            //If match is found
+            if(password == confirmPassword)
+            {
+                //Proceed with normal function... run php
+                return true;
+            }
+            //If passwords don't match or email is already taken,
+            else if (password != confirmPassword)
+            {
+                //Prevent form from submitting
+                e.preventDefault(e);
+                //Show error div
+                $('#passwordError').show(400);
+                //Remove values if incorrect
+                $('#password').val('');
+                $('#confirmPassword').val('');
+                return false;
+            } 
+        });
+    });
+
+    

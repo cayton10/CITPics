@@ -56,15 +56,6 @@
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" id="login-form">
                   <h2 class="text-center registration">New User Registration</h2>
-                  <?
-                  //PHP Script checks session variable for registerAttempt
-                  //If registerAttempt > 0, show div that informs user that something went wrong.
-                  if($_SESSION['registerAttempt'] > 0)
-                  {
-                    echo "<div class='alert alert-danger' role='alert'><p>Something went wrong... Please check your registration credentials
-                          or contact an administrator.</p</div>";
-                  }
-                  ?>
                   <!-- registration processing form send to php script -->
                   <form autocomplete="off" method="POST" action='php_scripts/add_user.php' id="registrationForm">
                     <!-- NAME GROUP -->
@@ -102,11 +93,11 @@
                       <div class="row justify-content-start">
                         <div class="col-12 col-md-6">                 
                           <label for="password">Password</label>
-                          <input type="password" name="password" class="form-control cit" id="password" placeholder="**********" autocomplete="user-password" required="required">
+                          <input type="password" name="password" class="form-control cit" id="password" placeholder="**********" autocomplete="user-password" required="required" minlength="6">
                         </div>
                         <div class="col-12 col-md-6">
                           <label for="confirm-password">Confirm Password</label>
-                          <input type="password" class="form-control cit" id="confirmPassword" placeholder="**********" autocomplete="user-password" required="required">
+                          <input type="password" class="form-control cit" id="confirmPassword" placeholder="**********" autocomplete="user-password" required="required" minlength="6">
                         </div>
                         <div class="col-12 passwordError text-center" id="passwordError">
                           <p><span id="error">!!!!</span> Passwords do not match. Check passwords and try again <span id="error">&#161;&#161;&#161;&#161;</p>
