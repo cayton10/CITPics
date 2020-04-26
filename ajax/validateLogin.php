@@ -38,19 +38,9 @@
       //Store admin value for control flow in redirection
       $_SESSION['isAdmin'] = $isAdmin;
       $response['success'] = true;
-      $response['message'] = 'Email and Password Exist';
-        
-      //Check u_isAdmin value
-      if($isAdmin == 0)
-      { //If 0, send to user to photo gallery
-        $response['userType'] = 0;
-      }
-      else
-      {
-        $response['userType'] = 1;
-      }       
+      $response['message'] = 'Email and Password Exist';      
     }
-    else
+    else if($stmt->num_rows != 1)
     {
       $response['success'] = false;
       $response['error'] = 'Wrong Email or Password';

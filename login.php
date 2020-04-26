@@ -63,19 +63,26 @@
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5" data-aos="fade-right" id="login-form">
                   <h2 class="text-center registration">Member Login</h2>
-                  <form method="POST" action="php_scripts/login_user.php" id="loginForm">
+                  <form method="POST" action="php_scripts/login_user.php" id="loginForm" autocomplete="off">
                     <div class="form-group">
                       <label for="email">Email Address</label>
                       <input name="email" type="email" class="form-control cit" id="email" 
-                              aria-describedby="emailHelp" placeholder="tony_stark@starkindustries.com" value="<?=$_POST['email'];?>">
+                              aria-describedby="emailHelp" placeholder="tony_stark@starkindustries.com" value="<?=$_POST['email'];?>" 
+                              required="required" autocomplete="off">
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input name="password" type="password" class="form-control cit" id="password" placeholder="**********">
+                      <input name="password" type="password" class="form-control cit" id="password" placeholder="**********" 
+                             required="required" autocomplete="off">
+                    </div>
+                    <div class="row">
+                      <div class="col-12 passwordError text-center" id="passwordError">
+                            <p>Username and/or password error. Check credentials or <a class="link" href="register.php">register</a> an account.</p>
+                      </div>
                     </div>
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
-                        <button id="login" type="submit" class="btn btn-outline-white btn-block">Submit</button>
+                        <button id="login" type="button" class="btn btn-outline-white btn-block">Submit</button>
                       </div>
                     </div>
                     <div class="form-check center">

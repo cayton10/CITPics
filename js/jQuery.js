@@ -175,9 +175,8 @@ $('#registerEmail').click(function()
 
     $(document).ready(function(){
         //On login form submission,
-        $('#loginForm').on('submit', function (e)
-        {   //Prevent default action
-            e.preventDefault(e);
+        $('#login').click(function(e)
+        {   
             //Store user entered data in vars
             var userEmail = $('#email').val();
             var userPass = $('#password').val();
@@ -186,7 +185,7 @@ $('#registerEmail').click(function()
             $.ajax(
                 {
                     //Validate user login against database
-                    //Set session variables 
+                    //and set session variables / encode JSON
                     url: "ajax/validateLogin.php",
                     method: "POST",
                     data: {email: userEmail ,password: userPass},
@@ -195,15 +194,15 @@ $('#registerEmail').click(function()
                         //If a positive response is returned
                        if(response.success)
                        {
-                           console.log(response.message);
+                           //From php script. If success = true, send authenticated user
+                           //To login_user script. (COMPLETE FORM ACTION)
                            //Submit the form as part of success function
                             $('#loginForm').submit()
                        }
                        else
                        {
-                           //Log appropriate error to console
-                           console.log(response.error);
-
+                            //Show appropriate error if username and pw are incorrect
+                            $('#passwordError').show(400);
                        } 
                        
                     },
@@ -214,33 +213,6 @@ $('#registerEmail').click(function()
                     }
                 }
                 )
-        });
-        /** CHECK PASSWORD CONFIRM PASSWORD VALIDITY FUNCTION */
-    
-        $('#registrationForm').submit(function(e){
-      
-            //Store password values
-            var password = $('#password').val();
-            var confirmPassword = $('#confirmPassword').val();
-                
-            //If match is found
-            if(password == confirmPassword)
-            {
-                //Proceed with normal function... run php
-                return true;
-            }
-            //If passwords don't match or email is already taken,
-            else if (password != confirmPassword)
-            {
-                //Prevent form from submitting
-                e.preventDefault(e);
-                //Show error div
-                $('#passwordError').show(400);
-                //Remove values if incorrect
-                $('#password').val('');
-                $('#confirmPassword').val('');
-                return false;
-            } 
         });
     });
 

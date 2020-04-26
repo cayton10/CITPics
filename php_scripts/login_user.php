@@ -1,7 +1,8 @@
 <?
     //START SESSION TO BRING IN ADMIN SESSION VAR
     session_start();
-    if(!empty($_SESSION['isAdmin']))
+    //If admin session variable is set,
+    if(isset($_SESSION['isAdmin']))
     {
         //If not an admin
         if($_SESSION['isAdmin'] == 0)
@@ -19,6 +20,6 @@
     else
     {
         //If 'isAdmin' session variable is empty, send back to login
-        header('../login.php');
+        header('location:../login.php');
     }    
 ?>
