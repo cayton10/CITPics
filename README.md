@@ -185,6 +185,14 @@ On reaching a successful ajax call and returning a JSON object with the correct 
 ### Image Upload
 ##### 4.26.2020
 Started cleaning up the image upload form since I haven't touched it since 2.13.2020. Needed to add pertinent php information like name attribute, change enc-type of form, etc. 
+##### 4.27.2020
+Had an issue with uploading last night that kept me up for hours. The formatting of the timestamp for MySQL was wrong in my php script. It took forever to debug and figure out what the culprit was. Fixed this morning in a few short minutes.
+
+Attempted to set the FormData() function in the ajax call for this script in order to limit what's seen. Security is quickly becoming something I am eyeballing during development. 
+
+Used bootstrap modal to process error handling on return of JSON messages from uploadPhoto.php script. These are working well. 
+    * Don't forget to move your modals outside of any containing divs, or they'll be stuck at that divs z-index!
+
 
 
 

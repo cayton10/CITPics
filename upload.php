@@ -5,18 +5,55 @@
 ?>
 
   <div class="site-wrap">
+
+      <!-- UPLOAD SUCCESS MODAL -->
+      <div class="modal fade" id="uploadSuccess" tabindex="-1" role="dialog" aria-hidden="">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title registration" id="uploadTitle">Success</h5>
+            </div>
+            <div class="modal-body text-center">
+              Upload complete. 
+            </div>
+            <div class="modal-footer">
+                  <button type="button" class="col-5 close btn btn-primary text-center" data-dismiss="modal">Close</button>
+                  <a id="gallery" class="col-5 gallery btn btn-primary text-center"
+                      href="feed.php" role="button">Gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- UPLOAD FAILURE MODAL -->
+      <div class="modal fade" id="uploadFail" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title registration">Failed</h5>
+            </div>
+            <div class="modal-body text-center" id="failMessage"></div>
+            <div class="modal-footer">
+              <button type="button" class="col-5 close btn btn-primary text-center" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
     <!--BEGIN MAIN-->
     <main id="main">
       <div class="hero-section">
         <!-- HERO CONTAINER -->
+        
         <div class="container">
           <div class="row align-items-center">
+
+          
             <div class="col-12 hero-text-image">
               <!-- UPLOAD FORM -->
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5 uploadForm" id="login-form">
                   <h2 class="text-center registration">Upload Photo</h2>
-                  <form id="uploadForm" method="POST" action='ajax/uploadPhoto.php' enctype="multipart/form-data" autocomplete="off">
+                  <form id="uploadForm" method="POST" action='ajax/uploadPhoto.php' enctype="multipart/form-data" autocomplete="off" name="uploadForm">
                       <!-- UPLOAD IMAGE AND PREVIEW -->
                       <div class="row-fluid mt-4">
                         <div class="col-12">
@@ -64,6 +101,8 @@
                     </div>
                   </form>
                   <!-- END LOGIN FORM -->
+
+                  
                 </div>
               </div>
             </div>

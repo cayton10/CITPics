@@ -182,7 +182,7 @@ $('#registerEmail').click(function()
             //Store user entered data in vars
             var userEmail = $('#email').val();
             var userPass = $('#password').val();
-            sendTo = window.location;
+
             //Start ajax call for sending info to be checked against 'user' table in DB
             $.ajax(
                 {
@@ -206,7 +206,7 @@ $('#registerEmail').click(function()
                             //Show appropriate error if username and pw are incorrect
                             $('#passwordError').show(400);
                             //Disable submit button
-                            $('#login').attr("disabled", "disabled");
+                            console.log(response.error);
                        } 
                        
                     },
@@ -231,29 +231,33 @@ $('#registerEmail').click(function()
      * TO IMG GALLERY.
      */
 
-
-     /** 
-     $(document).ready(function(){
+ 
+     /**$(document).ready(function(){
         $('#upload').click(function()
         {
-            //Get form data and store in object
-            var uploadInfo = {
-                'image'    : $('#img').val(),
+            //Create FormData Object and load info
+            var uploadForm = document.getElementById('uploadForm');
+            var formData = new FormData(uploadForm);
+            
+            /**var uploadInfo = {
                 'filename' : $('#file').val(),
                 'title'    : $('#title').val(),
                 'summary'  : $('#summary').val(),
             };
-            console.log(uploadInfo);
+            console.log(formData);
 
             $.ajax(
                 {
                     url: "ajax/uploadPhoto.php",
                     method: "POST",
                     enctype: 'multipart/form-data',
-                    data: uploadInfo,
-                    dataType: "JSON",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
                     success: function(response)
                     {
+                        console.log(response);
                         if(response.success)
                         {
                             console.log(response.success);
@@ -275,33 +279,35 @@ $('#registerEmail').click(function()
         })
      });*/
 
-     $(document).ready(function(){
-        $('#uploadForm').submit(function()
+      $(document).ready(function(){
+        $('#uploadForm').submit(function(e)
         {
+            e.preventDefault(e);
             //Get form data and store in object
-
             $.ajax(
                 {
                     url: "ajax/uploadPhoto.php",
                     method: "POST",
                     enctype: 'multipart/form-data',
+                    dataType: "json",
                     data: new FormData(this),
                     contentType: false,
                     cache: false,
                     processData: false,
                     success: function(response)
                     {
+                        //If success = true
                         if(response.success)
                         {
-                            console.log(response.success);
-                            console.log(response.message);
+                            //Show success modal and offer options
+                            $('#uploadSuccess').modal('show');
                         }
+                        //If success = false
                         else
                         {
-                            console.log(response.success);
-                            console.log(response.error);
+                            $('#uploadFail').modal('show');
+                            $('#failMessage').html(response.error);
                         }
-
                     },
                     error: function(error)
                     {
@@ -310,4 +316,14 @@ $('#registerEmail').click(function()
                 }
             )
         })
+
+        /**IF CLICK CLOSE BUTTON ON APPROPRIATE MODAL */
+        //If staying and close button is clicked,
+        $('.close').click(function()
+        {   //Reset all fields associated with uploads
+            $('#file').val('');
+            $('#title').val('');
+            $('#summary').val('');
+        });
+
      });

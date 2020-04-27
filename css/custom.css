@@ -37,6 +37,16 @@ input[type=number] {
 
 
 /* ================================ FORMATTING FOR BUTTONS ===============================*/
+.gallery{
+    background:  rgba(255,157,124,1) 0% !important;
+    transition: .2s ease-in-out !important;
+}
+.gallery:hover{
+    background: #9CC9FF !important;
+    color: #FBFF9C !important;
+    transform: scale(1.1) !important;
+    transition: .2s ease-in-out !important;
+}
 
 #register{
     background:  rgba(255,157,124,1) 0%;
@@ -53,6 +63,24 @@ input[type=number] {
     background:  rgba(255,157,124,1) 0%;
     transition: .2s ease-in-out;
   }
+.col-5.gallery.btn.btn-primary{
+    background:  rgba(255,157,124,1) 0%;
+    transition: .2s ease-in-out;
+  }
+
+  .modal-footer{
+      justify-content: space-around;
+  }
+/*PHOTO UPLOAD BROWSE BUTTON*/
+.col-12.close.btn.btn-primary{
+    background:  rgba(100,169,255,1) 100%;
+    transition: .2s ease-in-out;
+  }
+.col-5.close.btn.btn-primary{
+    background:  rgba(100,169,255,1) 100%;
+    transition: .2s ease-in-out;
+  }
+
 
 .login{
     background:  rgba(100,169,255,1) 100%;
@@ -315,6 +343,11 @@ li > a {
     text-transform: lowercase;
     font-size: 1.5em;
 }
+.close {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 1rem;   
+}
 
 /* ************************************************************************************************/
 /* ======================================== PHOTO FEED STYLING ===================================*/
@@ -507,3 +540,5 @@ h3.userName.comment{
       text-decoration: underline;
 
   }
+
+ 
