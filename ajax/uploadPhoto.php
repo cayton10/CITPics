@@ -109,7 +109,7 @@
         $imgTitle = htmlspecialchars(trim($_POST['title']));
         $imgSummary = htmlspecialchars(trim($_POST['summary']));
         //Set timestamp
-        $upTime = time();
+        $upTime = date("Y-m-d G:i:s");
         $likes = 0;
         $userID = $_SESSION['userID'];
 
