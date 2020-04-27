@@ -324,6 +324,34 @@ $('#registerEmail').click(function()
             $('#file').val('');
             $('#title').val('');
             $('#summary').val('');
+            //Reset image preview source
+            $('#preview').attr('src', "https://placehold.it/80x80");
         });
 
+     });
+
+     /** LIKE UTILITY FUNCTION
+      * 
+      * FROM A VISUAL STANDPOINT WE WANT TO CHANGE THE PRESENTATION
+      * OF THE APERTURE (SITE LOGO) WHEN A PHOTO IS LIKED. LET'S SEE IF
+      * WE CAN ACCOMPLISH THIS.
+      */
+     $(document).ready(function()
+     {
+        //When clicking empty aperture
+        $('.empty-aperture').on('click', function(e)
+        {
+            //Check state of like button
+            //If like button is empty...
+            if($(this).attr('src') == 'img/empty_aperture.svg')
+            {
+                //Take THIS empty aperture, fade opacity and change to filled aperture. Bring opacity back to 100%
+                $(this).fadeTo('fast', 0.11).fadeIn('slow').attr('src', 'img/badge_logo.svg').fadeTo('fast', 1.0);
+            }
+            else if($(this).attr('src') == ('img/badge_logo.svg')) //If like button is filled
+            {   //Revert source back to empty aperture
+                $(this).fadeTo('fast', 0.11).fadeIn('slow').attr('src', 'img/empty_aperture.svg').fadeTo('fast', 1.0);
+            }
+            
+        });
      });

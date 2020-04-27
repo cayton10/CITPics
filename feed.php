@@ -29,7 +29,7 @@ require_once("header.php");
                   <h4>Title: Can we please set the max for this at 32?</h4>
                 </div>
                 <!-- IMAGE SPACE AND LINK TO FULL IMAGE POPUP -->
-                <div>
+                <div class="photo">
                   <a href="#" class="d-block mb-4 img" alt="click to blow up">
                     <img src="img/img_1.jpg" alt="Image" class="img-fluid post">
                   </a>

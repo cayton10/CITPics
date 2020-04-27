@@ -193,6 +193,7 @@ Attempted to set the FormData() function in the ajax call for this script in ord
 Used bootstrap modal to process error handling on return of JSON messages from uploadPhoto.php script. These are working well. 
     * Don't forget to move your modals outside of any containing divs, or they'll be stuck at that divs z-index!
 
+After user is presented with success modal, they're presented with the option of closing the modal to upload another photo, or they can proceed to the gallery page. If a user chooses to upload a new photo, all input fields are cleared for next photo upload, as well as the image preview. 
 
 
 

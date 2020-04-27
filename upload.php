@@ -73,7 +73,7 @@
                         </div>
                         <!--IMAGE PREVIEW WINDOW-->
                         <div class="ml-2 col-sm-6 img-preview">
-                          <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
+                          <img id="preview" src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
                         </div>
                       
                     <!-- TITLE -->

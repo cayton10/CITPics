@@ -394,6 +394,8 @@ h3.userName.comment{
     text-transform: lowercase;
 }
 
+
+
 /* OBJECT FIT MEDIA QUERIES */
 
 /*@media (min-width: ).img-fluid.post{
@@ -402,7 +404,7 @@ h3.userName.comment{
     object-fit: contain;
 }
 
-/*XTRA SMALL DEVICE(PHONES) PHOTO POST OBJECT FIT*/
+/*XTRA SMALL DEVICE(PHONES) PHOTO POST OBJECT FIT
 @media only screen and (max-width: 600px){
     .img-fluid.post{ 
     width: 100%;
@@ -410,7 +412,7 @@ h3.userName.comment{
     object-fit: contain;
     }
 }
-/*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT*/
+/*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT
 @media only screen and (min-width: 600px){
     .img-fluid.post{ 
     width: 210px;
@@ -418,13 +420,24 @@ h3.userName.comment{
     object-fit: contain;
     }
 }
-/*MEDIUM DEVICE (LANDSCAPE TABLETS) PHOTO POST OBJECT FIT*/
+/*MEDIUM DEVICE (LANDSCAPE TABLETS) PHOTO POST OBJECT FIT
 @media only screen and (min-width: 768px){
     .img-fluid.post{ 
     width: 210px;
     height: 210px;
     object-fit: contain;
     }
+}
+
+/** SET IMAGE DIV HEIGHT AND WIDTH
+*   THIS HAS BEEN TOUGH SINCE JANUARY
+*   LET'S SEE WHAT WE CAN DO. */
+.photo{
+    width: 100%;
+    height: 100%;
+}
+.photo > img{
+    object-fit: contain;
 }
 
 /* ===================== LIKE BUTTON STYLING ==================== */
