@@ -20,9 +20,6 @@
     if($email != "admin@citpics.com"){
         $adminCheck = 0;
     }
-    echo $adminCheck;
-    //Set session variable for name on registration redirect
-    $_SESSION['name'] = $fName;
 
     //Prepare query just like B. Morgan told me to WRITE to the DB
     $query = "INSERT INTO user VALUES (?,?,?,?,?,?,?)";
@@ -44,9 +41,7 @@
         echo "ERROR occurred";
         
         else
-        echo $stmt->affected_rows;
-        header('location:../feed.php');
-        
 
+        header('location:../login.php');
   }
 ?>

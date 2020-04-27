@@ -91,6 +91,19 @@ input[type=number] {
     transition: .2s ease-in-out;
 }
 
+/* PHOTO UPLOAD BUTTON STYLING */
+#upload{
+    background:  rgba(100,169,255,1) 100%;
+    transition: .2s ease-in-out;
+}
+
+#upload:hover{
+    background: #9CC9FF;
+    color: #FBFF9C;
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+
 /* COMMENT */
 
 #post-comment{

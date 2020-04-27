@@ -145,7 +145,9 @@ $('#password').click(function()
 {
     if($('#passwordError').is(':visible'))
     {
-       $('#passwordError').hide(200); 
+       $('#password').val('');
+       $('#passwordError').hide(200);
+       $('#login').removeAttr("disabled"); 
     };
 });
 
@@ -175,7 +177,7 @@ $('#registerEmail').click(function()
 
     $(document).ready(function(){
         //On login form submission,
-        $('#login').click(function(e)
+        $('#login').click(function()
         {   
             //Store user entered data in vars
             var userEmail = $('#email').val();
@@ -203,6 +205,8 @@ $('#registerEmail').click(function()
                        {
                             //Show appropriate error if username and pw are incorrect
                             $('#passwordError').show(400);
+                            //Disable submit button
+                            $('#login').attr("disabled", "disabled");
                        } 
                        
                     },
@@ -217,3 +221,93 @@ $('#registerEmail').click(function()
     });
 
     
+
+
+
+
+    /********************** UPLOAD UTILITY FUNCTION ********************************
+     * AJAX CALL TO PROCESS USER UPLOAD AND CHECK FOR
+     * SUCCESS AGAINST DB PRIOR TO REDIRECTING BACK
+     * TO IMG GALLERY.
+     */
+
+
+     /** 
+     $(document).ready(function(){
+        $('#upload').click(function()
+        {
+            //Get form data and store in object
+            var uploadInfo = {
+                'image'    : $('#img').val(),
+                'filename' : $('#file').val(),
+                'title'    : $('#title').val(),
+                'summary'  : $('#summary').val(),
+            };
+            console.log(uploadInfo);
+
+            $.ajax(
+                {
+                    url: "ajax/uploadPhoto.php",
+                    method: "POST",
+                    enctype: 'multipart/form-data',
+                    data: uploadInfo,
+                    dataType: "JSON",
+                    success: function(response)
+                    {
+                        if(response.success)
+                        {
+                            console.log(response.success);
+                            console.log(response.message);
+                        }
+                        else
+                        {
+                            console.log(response.success);
+                            console.log(response.error);
+                        }
+
+                    },
+                    error: function(error)
+                    {
+                        alert("Something went wrong");
+                    }
+                }
+            )
+        })
+     });*/
+
+     $(document).ready(function(){
+        $('#uploadForm').submit(function()
+        {
+            //Get form data and store in object
+
+            $.ajax(
+                {
+                    url: "ajax/uploadPhoto.php",
+                    method: "POST",
+                    enctype: 'multipart/form-data',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response)
+                    {
+                        if(response.success)
+                        {
+                            console.log(response.success);
+                            console.log(response.message);
+                        }
+                        else
+                        {
+                            console.log(response.success);
+                            console.log(response.error);
+                        }
+
+                    },
+                    error: function(error)
+                    {
+                        alert("Something went wrong");
+                    }
+                }
+            )
+        })
+     });

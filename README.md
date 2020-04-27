@@ -172,9 +172,19 @@ in the ajax call parameters. This defeats the purpose of ajax, right!?
 KISS <-
 
 ### Login Form
-4.23.2020
+##### 4.23.2020
 Form is functional. Sends user to appropriate page (admin or gallery) depending on credentials returned from DB. Trying to figure out how to incorporate jQuery error handling on Login Form (php generates content on error here). Wondering how to use fade animations on these.
 
+##### 4.26.2020
+Finished up error handling and correct php header() redirects with ajax calls. This was a tough one for me to wrap my brain around at first. Every time I've used a form and php to check against the DB, I'm just using the action=attribute to send the information to the appropriate script. If that's done with ajax we start to run into problems. It took me a while to realize that I could set the event for the ajax calls to the "Submit" button, but set the element as a:
+```html
+<button type="button">
+```
+On reaching a successful ajax call and returning a JSON object with the correct statements based on the DB query, trigger the submission of the form to the appropriate php script. Else, no page reloads and we can display the proper error handling div.
+
+### Image Upload
+##### 4.26.2020
+Started cleaning up the image upload form since I haven't touched it since 2.13.2020. Needed to add pertinent php information like name attribute, change enc-type of form, etc. 
 
 
 

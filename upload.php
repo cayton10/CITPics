@@ -15,16 +15,16 @@
               <!-- UPLOAD FORM -->
               <div class="row justify-content-around align-items-center">
                 <div class="col-10 col-md-10 col-lg-8 text-left text-lg-left bg-white py-5 uploadForm" id="login-form">
-                  <h2 class="text-center login">Upload Photo</h2>
-                  <form id="uploadForm" method="POST" action=''>
+                  <h2 class="text-center registration">Upload Photo</h2>
+                  <form id="uploadForm" method="POST" action='ajax/uploadPhoto.php' enctype="multipart/form-data" autocomplete="off">
                       <!-- UPLOAD IMAGE AND PREVIEW -->
                       <div class="row-fluid mt-4">
                         <div class="col-12">
                           <div class="row justify-content-between align-items-center">
                             <div class="col-8">
-                                <input type="file" name="img[]" class="file col-8" accept="image/*">
+                                <input id="img" type="file" name="img" class="file col-8" accept=".png, .jpg, .jpeg, .svg, .gif, .bmp">
                                 <div class="input-group my-3">
-                                  <input type="text" class="form-control" disabled placeholder="Upload File" id="file">                               
+                                  <input id="file" type="text" name="file" class="form-control" placeholder="Upload File">                               
                                 </div>
                             </div>
                             <div class="col-4">
@@ -43,14 +43,15 @@
                         <div class="form-group image">
                           <div class="row justify-content-between">
                             <div class="col-12 img-title">
-                              <label for="exampleInputTitle">Image Title</label>
-                              <input type="name" class="form-control cit" id="exampleTitle" placeholder="Trip to Hawaii" required>
+                              <label for="imageTitle">Image Title</label>
+                              <input id="title" name="title" maxlength="128" type="text" class="form-control cit" id="imageTitle" 
+                                     placeholder="Insert a Title" required="required" autocomplete="off">
                             </div>
                             <div class="col-12">
                     <!-- SUMMARY -->
-                              <label for="exampleInputImageSummary">Image Summary</label>
-                              <textarea type="name" class="form-control summary" id="image-summary" 
-                                placeholder="This is placeholder text for the volcano picture I'm going to upload." rows="3" required></textarea>
+                              <label for="summary">Image Description</label>
+                              <textarea id="summary" name="summary" type="name" class="form-control summary"  
+                                placeholder="Provide a short description for your image." rows="3" required="required" autocomplete="off"></textarea>
                             </div>
                           </div>
                         </div>
@@ -58,7 +59,7 @@
                     <!-- SUBMIT -->
                     <div class="row justify-content-around">
                       <div class="form-actions col-6 col-md-4">
-                        <button id="login" type="submit" class="btn btn-outline-white btn-block">Post</button>
+                        <button id="upload" type="submit" class="btn btn-outline-white btn-block">Upload</button>
                       </div>
                     </div>
                   </form>
