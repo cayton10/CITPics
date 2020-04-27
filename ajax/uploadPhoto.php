@@ -92,10 +92,6 @@
         }
         //If it works, log appropriate response for uploading
         $response['message'] = "Image uploaded successfully. ";
-    }
-    
-
-
         /**LOAD INFORMATION FROM AJAX CALL INTO VARIABLES FOR 
          * DB UPLOAD INSERT VALUES INTO pic TABLE AFTER IMG
          * HAS BEEN PLACED IN UPLOADS FOLDER.
@@ -150,9 +146,10 @@
             
         }
         //Set header with appropriate json information... lick the stamp, and send it
+    }
       
 
-    }
+  }
   
 
   else
