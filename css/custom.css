@@ -394,38 +394,69 @@ h3.userName.comment{
     text-transform: lowercase;
 }
 
-
-
-/* OBJECT FIT MEDIA QUERIES */
-
-/*@media (min-width: ).img-fluid.post{
-    width: 255px;
-    height: 255px;
-    object-fit: contain;
+.photo{
+    margin-top: 5px;
 }
 
-/*XTRA SMALL DEVICE(PHONES) PHOTO POST OBJECT FIT
+/* OBJECT FIT MEDIA QUERIES *******************************************************************************/
+/* GOING TO HAVE TO REVISIT THESE AT SOME POINT ***********************************************************/
+/*XTRA SMALL DEVICE(PHONES) PHOTO POST OBJECT FIT*/
 @media only screen and (max-width: 600px){
-    .img-fluid.post{ 
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+
+    .photo{
+        width: 100%;
+        height: 384px!important;
+        margin-bottom: 1rem;
     }
 }
-/*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT
+/*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT*/
 @media only screen and (min-width: 600px){
     .img-fluid.post{ 
-    width: 210px;
-    height: 210px;
+    width: 240px;
+    height: 240px;
     object-fit: contain;
     }
+
+    .photo-title{
+        height: 84px;
+        overflow: hidden;
+    }
+    div.image-summary{
+        height: 180px;
+        overflow: hidden;
+    }
 }
-/*MEDIUM DEVICE (LANDSCAPE TABLETS) PHOTO POST OBJECT FIT
+/*MEDIUM DEVICE (LANDSCAPE TABLETS) PHOTO POST OBJECT FIT*/
 @media only screen and (min-width: 768px){
     .img-fluid.post{ 
     width: 210px;
     height: 210px;
     object-fit: contain;
+    }
+
+    .photo-title{
+        height: 112px;
+        overflow: hidden;
+    }
+    div.image-summary{
+        height: 180px;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .img-fluid.post{
+        width: 255px;
+        height: 255px;
+        object-fit: contain;
+    }
+    .photo-title{
+        height: 84px;
+        overflow: hidden;
+    }
+    div.image-summary{
+        height: 180px;
+        overflow: hidden;
     }
 }
 

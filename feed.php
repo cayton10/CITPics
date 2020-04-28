@@ -119,7 +119,7 @@ require_once("header.php");
                 <div class="row-fluid text-center photo-title">
                   <h4>Title: I tried to find a place to use this but couldn't</h4>
                 </div>
-                <div>
+                <div class="photo">
                   <a href="#" class="d-block mb-4 img" alt="click to blow up">
                     <img src="img/cit_logo_color.svg" alt="Image" class="img-fluid post">
                   </a>
