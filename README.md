@@ -195,6 +195,17 @@ Used bootstrap modal to process error handling on return of JSON messages from u
 
 After user is presented with success modal, they're presented with the option of closing the modal to upload another photo, or they can proceed to the gallery page. If a user chooses to upload a new photo, all input fields are cleared for next photo upload, as well as the image preview. 
 
+### Gallery
+##### 4.28.2020
+Created an ajax call to run a php script for querying the 'pics' table in the CITPics DB. I also did some footstep retracing to clean up the image grid presentation (CSS), which I had not touched since February. AJAX call returns all pertinent pics JSON data to output each image and any data associated with it. 
+
+Updated like button to work with dynamically created 'like' aperture button. 
+
+    * Need to create trigger for photo gallery ajax call
+    * Figure out why some dynamically created <div> elements aren't visibile w/in Chrome dev tools
+    * Finish checks on php script to prevent simple tampering.
+    * Finish "Clicking an image will bring up the full size version of the image";
+    * Finish the jQuery logic to add likes, run ajax to add likes to DB.
 
 
 

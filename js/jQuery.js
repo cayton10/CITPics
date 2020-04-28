@@ -343,7 +343,12 @@ $('#registerEmail').click(function()
 
       $(document).ready(function()
       {
-            //Create ajax call to call pullPhotos.php script
+          //Gallery trigger function. On click, run ajax call to php script which pulls
+          //all values from pics table. Outputs appropriate information. Uses pics file name
+          //to search in uploads folder and output appropriate image.
+          $('#galleryTrigger').click(function()
+            {
+                //Create ajax call to call pullPhotos.php script
             $.ajax(
                 {
                     url: "ajax/pullPhotos.php",
@@ -355,14 +360,15 @@ $('#registerEmail').click(function()
                         $.each(data, function(key, value)
                         {
                         
-                            
+                            //Declare pics info variables to easily output info
                             var title = value.p_Title;
                             var photo = value.p_Filename;
                             var likes = value.p_Likes;
                             var summary = value.p_Summary;
+                            var picId = value.p_ID;
 
-                            console.log(likes);
-                            
+                            //Append required HTML elements for complete post
+                            //Include all required pics information
                             $('#postOutput').append(
                                 "<div class='col-12 col-sm-6 col-md-4 col-lg-3'>\
                                     <div class='post-entry'>\
@@ -379,8 +385,7 @@ $('#registerEmail').click(function()
                                         <div class='row-fluid justify-content-between align-content-center social'>\
                                         <!-- LIKE BUTTON APERTURE -->\
                                         <div class='col-3 like-button'>\
-                                            <button class='like_button' class='text-center' type='submit'><img src='img/empty_aperture.svg' class='img-fluid empty-aperture' \
-                                            alt='like button'/>\
+                                            <button class='like_button' class='text-center' type='submit'><img src='img/empty_aperture.svg' class='img-fluid empty-aperture' data-id='"+ picId +"'alt='like button'/>\
                                             Like</button>\
                                         </div>\
                                         <!-- END LIKES -->\
@@ -395,7 +400,7 @@ $('#registerEmail').click(function()
                                         \
                                         <!-- LIKES COUNTER -->\
                                             <div class='col-6 likes'>\
-                                                <button class='likeCount'>" + likes + " likes</button>\
+                                                <button class='likeCount'><span id='" + picId + "'>" + likes + "</span> likes</button>\
                                             </div>\
                                         <!-- END LIKES COUNTER -->\
                                             </div>\
@@ -420,8 +425,9 @@ $('#registerEmail').click(function()
                     }
                 }
                 )
-
-            
+            });
+            //Trigger gallery Trigger which is only present in feed.php
+          $('#galleryTrigger').trigger('click');  
       });
 
        /** LIKE UTILITY FUNCTION
@@ -432,20 +438,67 @@ $('#registerEmail').click(function()
       */
      $(document).ready(function()
      {
-        //When clicking empty aperture
-        $(document).on('click', '.empty-aperture', function()
-        {
-            //Check state of like button
-            //If like button is empty...
-            if($(this).attr('src') == 'img/empty_aperture.svg')
+         //UPDATE VARIABLE WILL BE USED TO UPDATE LIKES COUNTER
+         var update;
+         //DECLARE VARIABLE TO STORE LIKES OF 'THIS' CLICKED POST
+         var currentLikes;
+            //When clicking empty aperture
+            $(document).on('click', '.empty-aperture', function(e)
             {
-                //Take THIS empty aperture, fade opacity and change to filled aperture. Bring opacity back to 100%
-                $(this).fadeTo('fast', 0.11).fadeIn('slow').attr('src', 'img/badge_logo.svg').fadeTo('fast', 1.0);
-            }
-            else if($(this).attr('src') == ('img/badge_logo.svg')) //If like button is filled
-            {   //Revert source back to empty aperture
-                $(this).fadeTo('fast', 0.11).fadeIn('slow').attr('src', 'img/empty_aperture.svg').fadeTo('fast', 1.0);
-            }
+                //Add values to variables based on user's selection
+                update = ($(this).attr('data-id'));
+                //Get value of unique span, which is picture's DB id and store in variable
+                currentLikes = ($('#' + update).html())
+
+                if($(this).attr('src') == 'img/empty_aperture.svg')
+                {
+                    //Take THIS empty aperture, fade opacity and change to filled aperture. Bring opacity back to 100%
+                    $(this).fadeTo('fast', 0.11).fadeIn('slow').attr('src', 'img/badge_logo.svg').fadeTo('fast', 1.0);
+                    //Increment current likes and update appropriate total likes counter
+                    currentLikes++;
+                    $('#' + update).html(currentLikes);
+                }
+                //OOPS! I LIKED SOMEONE'S PIC ON ACCIDENT (CREEPING ON EXES)
+                else if($(this).attr('src') == ('img/badge_logo.svg')) //If like button is filled
+                {   //Revert source back to empty aperture
+                    $(this).fadeTo('fast', 0.11).fadeIn('slow').attr('src', 'img/empty_aperture.svg').fadeTo('fast', 1.0);
+                    //Decrement current likes and update appropriate total likes counter
+                    currentLikes--;
+                    $('#' + update).html(currentLikes);
+                }
+                updateNum = parseInt(update);
+
+                //CREATE AJAX CALL TO UPDATE LIKES COUNTER IN DATABASE
+                $.ajax(
+                    {
+                        //Send pic ID and current Likes
+                        
+                        url: "ajax/updateLikes.php",
+                        method: "POST",
+                        dataType: "JSON",
+                        data: {picID: updateNum ,likes: currentLikes},
+                        success: function(response)
+                        {
+                            //If a positive response is returned
+                           if(response.success)
+                           {
+                                console.log(response.message);
+                           }
+                           else
+                           {
+                                console.log(response.error);
+                           } 
+                           
+                        },
+                        //If error with ajax call, alert user.
+                        error: function(error)
+                        {
+                            alert("AJAX call malfunction!!!");
+                        }
+                    }
+                    )
+                
+            });
+
             
-        });
      });
