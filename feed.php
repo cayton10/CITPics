@@ -1,5 +1,4 @@
 <?
-session_start();
 require_once('dbConfig/config.php');
 require_once("header.php");
 ?>
@@ -22,7 +21,7 @@ require_once("header.php");
 <!-- BEGIN PICS GALLERY -->
       <div class="site-section">
         <div class="container">
-          <div class="row mb-5 align-content-center">
+          <div class="row mb-5 align-content-center" id="postOutput">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
               <div class="post-entry">
                 <div class="row-fluid text-center photo-title">

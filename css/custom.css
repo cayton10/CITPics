@@ -396,7 +396,9 @@ h3.userName.comment{
 
 .photo{
     margin-top: 5px;
+    background-color: #e8e8e8;
 }
+
 
 /* OBJECT FIT MEDIA QUERIES *******************************************************************************/
 /* GOING TO HAVE TO REVISIT THESE AT SOME POINT ***********************************************************/
@@ -405,9 +407,19 @@ h3.userName.comment{
 
     .photo{
         width: 100%;
-        height: 384px!important;
+        height: 380px!important;
         margin-bottom: 1rem;
     }
+
+    .img-fluid.post{
+        width: 360px;
+        height: 360px;;
+        object-fit: contain;
+    }
+}
+h4{
+    height: 100px;
+    overflow: hidden;
 }
 /*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT*/
 @media only screen and (min-width: 600px){
@@ -417,13 +429,19 @@ h3.userName.comment{
     object-fit: contain;
     }
 
-    .photo-title{
+    .photoTitle{
         height: 84px;
         overflow: hidden;
+        display: contents;
     }
     div.image-summary{
         height: 180px;
         overflow: hidden;
+    }
+    .photo{
+        width: 100%;
+        margin-bottom: 1rem;
+        object-fit: cover;
     }
 }
 /*MEDIUM DEVICE (LANDSCAPE TABLETS) PHOTO POST OBJECT FIT*/
@@ -433,14 +451,20 @@ h3.userName.comment{
     height: 210px;
     object-fit: contain;
     }
-
-    .photo-title{
-        height: 112px;
+    .photoTitle{
+        height: 180px;
         overflow: hidden;
+        display: contents;
     }
     div.image-summary{
         height: 180px;
         overflow: hidden;
+    }
+    .photo{
+        width: 100%;
+        margin-bottom: 1rem;
+        object-fit: contain;
+        height: 250px;
     }
 }
 
@@ -450,7 +474,7 @@ h3.userName.comment{
         height: 255px;
         object-fit: contain;
     }
-    .photo-title{
+    .photoTitle{
         height: 84px;
         overflow: hidden;
     }
@@ -469,6 +493,9 @@ h3.userName.comment{
 }
 .photo > img{
     object-fit: contain;
+}
+.row-fluid.text-center.photoTitle{
+    height: 300px;
 }
 
 /* ===================== LIKE BUTTON STYLING ==================== */

@@ -148,6 +148,6 @@ $response = [];
 
   else
   {
-      //header('location:../upload.php');
+      header('location:../upload.php');
   }
 ?>

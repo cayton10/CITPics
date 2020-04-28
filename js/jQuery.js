@@ -330,7 +330,101 @@ $('#registerEmail').click(function()
 
      });
 
-     /** LIKE UTILITY FUNCTION
+    
+
+
+
+     /** PULL PHOTOS AJAX CALL
+      * THIS AJAX CALL WILL BE TRIGGERED ON PAGE LOAD FOR 
+      * THE GALLERY PAGE. THE CALL WILL PULL VALUES FROM THE 
+      * pics TABLE IN THE CITPICS DB AND RESULTS WILL BE OUPUT 
+      * TO THE feed.php PAGE
+      */
+
+      $(document).ready(function()
+      {
+            //Create ajax call to call pullPhotos.php script
+            $.ajax(
+                {
+                    url: "ajax/pullPhotos.php",
+                    dataType: "json",
+                    method: "POST",
+                    success: function(data)
+                    {      
+                        //Loop through all photos and output to DOM
+                        $.each(data, function(key, value)
+                        {
+                        
+                            
+                            var title = value.p_Title;
+                            var photo = value.p_Filename;
+                            var likes = value.p_Likes;
+                            var summary = value.p_Summary;
+
+                            console.log(likes);
+                            
+                            $('#postOutput').append(
+                                "<div class='col-12 col-sm-6 col-md-4 col-lg-3'>\
+                                    <div class='post-entry'>\
+                                        <div class='text-center photoTitle'>\
+                                            <h4>" + title + "</h4>\
+                                        </div>\
+                                        <!-- IMAGE SPACE AND LINK TO FULL IMAGE POPUP -->\
+                                        <div class='photo'>\
+                                            <a href='#' class='d-block mb-4 img' alt='click to blow up'>\
+                                                <img src='../../uploads/" + photo + "' alt='Image' class='img-fluid post'>\
+                                            </a>\
+                                        </div>\
+                                        <!-- SOCIAL ROW -->\
+                                        <div class='row-fluid justify-content-between align-content-center social'>\
+                                        <!-- LIKE BUTTON APERTURE -->\
+                                        <div class='col-3 like-button'>\
+                                            <button class='like_button' class='text-center' type='submit'><img src='img/empty_aperture.svg' class='img-fluid empty-aperture' \
+                                            alt='like button'/>\
+                                            Like</button>\
+                                        </div>\
+                                        <!-- END LIKES -->\
+                                        \
+                                        <!-- COMMENT UTILITY LINK -->\
+                                        <div class='col-3 comment'>\
+                                            <a href='comments.php' class='d-block mb-4 img' alt='click to comment'>\
+                                                <img src='img/comment.svg' class='img-fluid comment_button' alt='comment button'/>\
+                                            </a>\
+                                        </div>\
+                                        <!-- END COMMENT UTILITY LINK -->\
+                                        \
+                                        <!-- LIKES COUNTER -->\
+                                            <div class='col-6 likes'>\
+                                                <button class='likeCount'>" + likes + " likes</button>\
+                                            </div>\
+                                        <!-- END LIKES COUNTER -->\
+                                            </div>\
+                                        <!-- IMAGE SUMMARY -->\
+                                            <div class='row-fluid align-content-center image-summary'>\
+                                            <p class='image_summary'>" + summary + "</p>\
+                                            </div>\
+                                        <!-- END IMAGE SUMMARY ROW -->\
+                                        \
+                                        </div>\
+                                    </div>"
+                            )
+                            
+                        });
+                            
+                            
+                    },
+                    //If error with ajax call, alert user.
+                    error: function(data)
+                    {
+                        alert("Error in pullPhoto ajax call");
+                    }
+                }
+                )
+
+            
+      });
+
+       /** LIKE UTILITY FUNCTION
       * 
       * FROM A VISUAL STANDPOINT WE WANT TO CHANGE THE PRESENTATION
       * OF THE APERTURE (SITE LOGO) WHEN A PHOTO IS LIKED. LET'S SEE IF
@@ -339,7 +433,7 @@ $('#registerEmail').click(function()
      $(document).ready(function()
      {
         //When clicking empty aperture
-        $('.empty-aperture').on('click', function(e)
+        $(document).on('click', '.empty-aperture', function()
         {
             //Check state of like button
             //If like button is empty...
