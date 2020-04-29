@@ -361,11 +361,14 @@ $('#registerEmail').click(function()
                         {
                         
                             //Declare pics info variables to easily output info
+                            //Grab all pertinent pics info for admin and commenting
                             var title = value.p_Title;
                             var photo = value.p_Filename;
                             var likes = value.p_Likes;
                             var summary = value.p_Summary;
                             var picId = value.p_ID;
+                            var upload = value.p_Upload;
+                            var postedBy = value.u_ID;
 
                             //Append required HTML elements for complete post
                             //Include all required pics information
@@ -373,11 +376,11 @@ $('#registerEmail').click(function()
                                 "<div class='col-12 col-sm-6 col-md-4 col-lg-3'>\
                                     <div class='post-entry'>\
                                         <div class='text-center photoTitle'>\
-                                            <h4>" + title + "</h4>\
+                                            <h4 class='centered'>" + title + "</h4>\
                                         </div>\
                                         <!-- IMAGE SPACE AND LINK TO FULL IMAGE POPUP -->\
                                         <div class='photo'>\
-                                            <a href='#' class='d-block mb-4 img' alt='click to blow up'>\
+                                            <a href='../../uploads/" + photo + "' data-fancybox class='d-block mb-4 img '" + picId + " alt='click to blow up'>\
                                                 <img src='../../uploads/" + photo + "' alt='Image' class='img-fluid post'>\
                                             </a>\
                                         </div>\
@@ -392,7 +395,7 @@ $('#registerEmail').click(function()
                                         \
                                         <!-- COMMENT UTILITY LINK -->\
                                         <div class='col-3 comment'>\
-                                            <a href='comments.php' class='d-block mb-4 img' alt='click to comment'>\
+                                            <a href='comments.php?id=" + picId + "' class='d-block mb-4 img' alt='click to comment'>\
                                                 <img src='img/comment.svg' class='img-fluid comment_button' alt='comment button'/>\
                                             </a>\
                                         </div>\
@@ -429,6 +432,18 @@ $('#registerEmail').click(function()
             //Trigger gallery Trigger which is only present in feed.php
           $('#galleryTrigger').trigger('click');  
       });
+
+
+
+
+      /**SHOW FULL IMAGE ON CLICK USING FANCYBOX
+       * THANKS, BRIAN
+       */
+
+       $(document).ready(function(e)
+       {
+           $('.photo').find('a').fancybox();
+       });
 
        /** LIKE UTILITY FUNCTION
       * 
@@ -502,4 +517,16 @@ $('#registerEmail').click(function()
             });
 
             
+     });
+
+
+
+
+     /**
+      * GO TO COMMENTS FUNCTION 
+      * 
+      */
+     $(document).ready(function()
+     {
+
      });

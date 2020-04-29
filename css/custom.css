@@ -396,7 +396,21 @@ h3.userName.comment{
 
 .photo{
     margin-top: 5px;
+    margin-bottom: 0px!important;
     background-color: #e8e8e8;
+    border: solid 2px;
+
+}
+
+.social{
+    padding-top: 5px;
+    padding-right: 5px;
+    border: solid 2px;
+    border-top: none;
+}
+
+.centered{
+    margin-top: 10%;
 }
 
 
@@ -421,10 +435,7 @@ h3.userName.comment{
     VERY STRANGE. THE ONLY WORKAROUND I MANAGED TO FIND WAS SETTING THE HEIGHT OF THE 
     <H4> TAGS TO EMULATE SETTING THE HEIGHT OF THE DIV.*/
 
-h4{
-    height: 80px;
-    overflow: hidden;
-}
+
 /*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT*/
 @media only screen and (min-width: 600px){
     .img-fluid.post{ 
@@ -436,7 +447,6 @@ h4{
     .photoTitle{
         height: 84px;
         overflow: hidden;
-        display: contents;
     }
     div.image-summary{
         height: 180px;
@@ -456,9 +466,8 @@ h4{
     object-fit: contain;
     }
     .photoTitle{
-        height: 180px;
+        height: 80px;
         overflow: hidden;
-        display: contents;
     }
     div.image-summary{
         height: 180px;

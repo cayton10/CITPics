@@ -15,7 +15,7 @@
                 written because we're not laywers...
                 </p>
             </div>
-            <div class="col-md-3 social text-center">
+            <div class="col-md-3 text-center">
               <h3 class="mb-1">GitHub</h3>
                 <a href="https://github.com/cayton10/bootstrap_project" target="_blank"><img class="img-fluid" src="img/GitHub-Mark-120px-plus.png" id="github" alt="github png"></a>
             </div>
@@ -62,8 +62,11 @@
   <script src="js/main.js"></script>
   <!-- CUSTOM JQUERY FILE -->
   <script src="js/jQuery.js"></script>
+  <!-- CDN FOR FANCYBOX SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   <!-- JQUERY UI FILE FOR CLASS ANIMATION TRANSISITONS -->
   <script
   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
   crossorigin="anonymous"></script>
+  

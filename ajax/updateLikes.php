@@ -32,6 +32,7 @@
     }
     //Set header and return json
     header('Content-Type: application/json');
+    die(json_encode($response));
   }
   else
   {

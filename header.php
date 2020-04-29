@@ -28,7 +28,9 @@
   <!-- Template Main CSS File -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/custom.css" rel="stylesheet">
-  
+  <!-- FANCY BOX CDN FOR CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
 
   <!-- =======================================================
     Template Name: SoftLand
