@@ -400,7 +400,7 @@ $('#registerEmail').click(function()
                                         \
                                         <!-- LIKES COUNTER -->\
                                             <div class='col-6 likes'>\
-                                                <button class='likeCount'><span id='" + picId + "'>" + likes + "</span> likes</button>\
+                                                <p class=likes><span id='" + picId + "'>" + likes + "</span> likes</p>\
                                             </div>\
                                         <!-- END LIKES COUNTER -->\
                                             </div>\
@@ -466,6 +466,7 @@ $('#registerEmail').click(function()
                     currentLikes--;
                     $('#' + update).html(currentLikes);
                 }
+                //Change value recovered from attr from string to int
                 updateNum = parseInt(update);
 
                 //CREATE AJAX CALL TO UPDATE LIKES COUNTER IN DATABASE

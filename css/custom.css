@@ -422,7 +422,7 @@ h3.userName.comment{
     <H4> TAGS TO EMULATE SETTING THE HEIGHT OF THE DIV.*/
 
 h4{
-    height: 100px;
+    height: 80px;
     overflow: hidden;
 }
 /*MEDIUM DEVICE (PHONES/PORTRAIT TABLETS) PHOTO POST OBJECT FIT*/
@@ -616,4 +616,7 @@ h4{
 
   }
 
- 
+/* LIKECOUNT STYLING */
+p.likes{
+    color: black;
+}

@@ -201,11 +201,14 @@ Created an ajax call to run a php script for querying the 'pics' table in the CI
 
 Updated like button to work with dynamically created 'like' aperture button. 
 
-    * Need to create trigger for photo gallery ajax call
+Created "triggering" div to only call trigger on gallery page.... Triggers ajax to upload all photos and photo information in DB.... That's a lot of triggers.
+
+
     * Figure out why some dynamically created <div> elements aren't visibile w/in Chrome dev tools
     * Finish checks on php script to prevent simple tampering.
     * Finish "Clicking an image will bring up the full size version of the image";
     * Finish the jQuery logic to add likes, run ajax to add likes to DB.
+        * Error handling still says the ajax call fails, but when checking the DB the likes have updated :/
 
 
 

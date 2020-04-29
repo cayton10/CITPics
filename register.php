@@ -80,7 +80,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                           <label for="zipCode">Zip Code</label>
-                          <input name="zipCode" autocomplete="user-zip" type="number" class="form-control cit" 
+                          <input name="zipCode" autocomplete="user-zip" type="text" inputmode="numeric" parrtern="[0-9]*" class="form-control cit" 
                                   id="exampleInputZip1" placeholder="26452" required="required" minlength="5" maxlength="5">
                         </div>
                         <div class="col-12 emailError text-center" id="emailError">
