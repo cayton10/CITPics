@@ -141,7 +141,7 @@ $response = [];
     }
     //Set header with appropriate json information... lick the stamp, and send it
     header('Content-Type: application/json');
-    die(json_encode($response));
+    echo(json_encode($response));
 
   }
   

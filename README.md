@@ -247,4 +247,11 @@ $query = "SELECT c_ID,
 
     * This brings back all of the information we can get for comments. Output results onto page using php.
 
+##### 4.30.2020
+
+#### Time
+    Come back and fix time variable. The time that's being inserted into the DB is in UTC for photo uploads, comments, etc. After having messed around with and storing valid times in jQuery/JS, I think it would be best to grab those values, store them in variables and pass them along to the DB on submission. This should solve the timezone problem.
+
+
+
 

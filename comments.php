@@ -80,7 +80,7 @@ $query = "SELECT c_ID,
             <div class="row mb-5 justify-content-around">
               <div class="col-12 col-sm-8">
                 <!-- IMAGE FROM FEED TO COMMENT ON -->
-                <figure><img src="../../uploads/<?echo $picFileName?>" alt="Free Website Template by Free-Template.co" class="img-fluid">
+                <figure><img src="../../uploads/<?echo $picFileName?>" alt="Free Website Template by Free-Template.co" class="img-fluid" id="commentPhoto">
                   <figcaption>Photo uploaded by: <? echo $fullName;?> </figcaption></figure>
               </div>
             </div>
@@ -99,7 +99,7 @@ $query = "SELECT c_ID,
               {
                 //Output elements and loop through all comment info.
                 echo "<h3 class='mb-5 comment-count'>" . $total . " " . " Total Comments</h3>
-                        <ul class='comment-list'>";
+                        <ul class='comment-list' id='commentList'>";
                           
                 echo "<br/>";
                 //For loop to access individual comments
@@ -136,11 +136,11 @@ $query = "SELECT c_ID,
               <!-- END comment-list -->
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5 comment-count">Leave a comment</h3>
-                <form action="ajax/addComment.php" method="POST" id="commentForm">
+                <form action="ajax/postComment.php" method="POST" id="commentForm">
                   <div class="form-group">
                     <label for="message">Message</label>
                     <textarea name="commentBody" id="message" cols="30" rows="10" class="form-control summary"></textarea>
-                    <input name="picID" value="<?echo $id?>" hidden="true"></input>
+                    <input name="picID" value="<?echo $id?>" hidden="true" id="picID"></input>
                   </div>
                   <div class="form-group">
                     <input type="submit" value="Post Comment" class="btn btn-primary" id="post-comment">

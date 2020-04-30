@@ -22,10 +22,10 @@ $(document).ready(function(){
 
 /* ------------------------- PREPEND COMMENT FUNCTION ------------------------ */
 
-$('#post-comment').click(function(e){
-
+$('#commentForm').submit(function(){
+    
+    preventDefault();
     //STOP NORMAL FORM SUBMISSION FOR jQuery HANDLING
-    e.preventDefault();
 
     //GET DATE FUNCTIONS AND ASSIGN TO VARIABLES
     var d = new Date();
@@ -66,14 +66,53 @@ $('#post-comment').click(function(e){
     //PREPEND DATE
     $($newComment).prepend('<div class="meta">' + dateStr + '</div>');
     //PREPEND USERNAME
-    $($newComment).prepend('<h3 class="userName comment">Username</h3>');
+    $($newComment).prepend('<h3 class="userName comment">Comment:</h3>');
     //APPEND CONTENT OF NEW ELEMENT TO COMMENT LIST
-    $('.comment-list').append($newComment.hide());
+    $('.comment-list').prepend($newComment.hide());
 
     $newComment.wrap('<li class="comment"></li>').wrap('<div class="comment-body"></div>'); 
         //ANIMATE COMMENT POSTING *THANKS BRIAN*
         $newComment.show(400);
 
+    
+
+    //IF COMMENT TEXT AREA IS NOT EMPTY AND SUBMIT BUTTON IS CLICKED,    
+   /**  if($('#message').val() != '')
+    {
+        //GRAB p_ID FROM HIDDEN INPUT FIELD
+        var picID = $('#picID').val();
+        $.ajax(
+            {
+                url: "ajax/postComment.php",
+                dateType: "json",
+                method: "POST",
+                data: {c_Text: $newComment, p_ID: picID},
+                success: function(response)
+                {
+                    if(response.success)
+                    {
+                        console.log(response.message);
+                        //ANIMATE SCROLL TO VIEW COMMENT AT TOP OF LIST UPON SUBMISSION
+                        if($('#message').val() != '')
+                        $('html, body').animate({
+                            scrollTop: $('#commentPhoto').offset().top
+                        }, 500);
+                    
+                    
+                    }
+                    else
+                    
+                        console.log(response.error);
+                    
+                },
+                error: function()
+                {
+                    alert("Ajax call malfunction!");
+                }
+                
+            }
+        )
+    }*/
     
     //RESET TEXT AREA VALUE AFTER SUBMISSION
     $('#message').val('');
