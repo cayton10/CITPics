@@ -210,16 +210,41 @@ Created "triggering" div to only call trigger on gallery page.... Triggers ajax 
     * Finish the jQuery logic to add likes, run ajax to add likes to DB.
         * Error handling still says the ajax call fails, but when checking the DB the likes have updated :/
 
+#### 4.29.2020
+Added some more styling to the photos divs to make the aesthetic a little more pleasing. Tried to emulate each post appearing like a polaroid. 
+
+Tried to use Colorbox jQuery plugin for showing full size images on click, but I couldn't manage to get it working. Could be a jQuery version issue. 
+
+As a backup I used Fancybox, which did the trick. When I've got more free time I may go back and edit some of the styling for these photo modals. 
 
 
 ### Comments
-4.24.2020 
-For setting timestamps, can use:
+##### 4.29.2020 
+Tomorrow's the big day! It's 20 to 11pm right now and changes were just committed for the comment utility. 
 
-```php
-<?
-date_default_timezone_set();
-?>
-```
+#### What we accomplished today:
 
-Found this in php book.
+    * Create a dynamic comments page so images are loaded based on user selection. 
+    * Organized a couple of MySQL SELECT statements for outputting desired information. 
+
+~~~~sql
+$query = "SELECT p_Filename, 
+                 u_FName, 
+                 u_LName 
+          FROM   pic p
+          JOIN   user u 
+          ON p.u_ID = u.u_ID 
+          WHERE p_ID=$id";
+
+//Second, fire query to get all comments in DESC order
+$query = "SELECT c_ID, 
+                 c_Text,
+                 c_Date
+          FROM comment
+          WHERE p_ID=$id
+          ORDER BY c_Date DESC";
+~~~~
+
+    * This brings back all of the information we can get for comments. Output results onto page using php.
+
+
