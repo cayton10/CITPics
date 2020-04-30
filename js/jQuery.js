@@ -20,24 +20,45 @@ $(document).ready(function(){
     $('#emailError').hide();
 });
 
-/* ------------------------- APPEND COMMENT FUNCTION ------------------------ */
+/* ------------------------- PREPEND COMMENT FUNCTION ------------------------ */
 
 $('#post-comment').click(function(e){
 
     //STOP NORMAL FORM SUBMISSION FOR jQuery HANDLING
     e.preventDefault();
 
-    //CREATE ARRAY OF LONG MONTH NAMES 
-    var monthLong = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     //GET DATE FUNCTIONS AND ASSIGN TO VARIABLES
     var d = new Date();
- 
+
     //GET LONG MONTH NAME FROM D.GETMONTH
-    var month = monthLong[d.getMonth()];
+    var month = d.getMonth();
+    month += 1 ;
     var date = d.getDate();
     var year = d.getFullYear();
+    var hours = d.getHours();
+    var minutes = d.getMinutes();
+
+
+    //AM vs PM AND FORMATTING 12 HOUR TIME
+
+    var mornEve;
+    if(hours >= 12)
+    
+        mornEve = "PM";
+    else
+
+        mornEve = "AM";
+
+    hours = hours % 12;
+    //FORMAT LEADING ZERO FOR MINUTES
+    if(minutes < 10)
+
+        minutes = '0' + minutes;
+
+
+    
     //STORE LONG MONTH, DAY, YEAR
-    var dateStr = month + "." + date + "." + year;
+    var dateStr = month + "." + date + "." + year + " @ " + hours + ":" + minutes + " " + mornEve;
    
     //POSTS USER COMMENT AND WRAPS COMMENT APPROPRIATELY
     //ASSIGN TEXT AREA CONTENT TO VAR $NEWCOMMENT

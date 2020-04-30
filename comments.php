@@ -115,13 +115,13 @@ $query = "SELECT c_ID,
                   }
                   //Make date real pretty
 
-                  $date = date('m.d.Y  @  g:i a', strtotime($c_Date));
+                  $date = date('n.d.Y  @  g:i a', strtotime($c_Date));
 
 
                   //OUTPUT COMMENT INFORMATION 
                   echo "<li class='comment'>
                           <div class='comment-body'>
-                            <h3 class=userName comment> Comment:</h3>
+                            <h3 class='userName comment'>Comment:</h3>
                               <div class='meta'>" . $date . "</div>
                                 <p>" . $c_Text . "</p>
                           </div>
@@ -136,10 +136,11 @@ $query = "SELECT c_ID,
               <!-- END comment-list -->
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5 comment-count">Leave a comment</h3>
-                <form action="#" class="">
+                <form action="ajax/addComment.php" method="POST" id="commentForm">
                   <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control summary"></textarea>
+                    <textarea name="commentBody" id="message" cols="30" rows="10" class="form-control summary"></textarea>
+                    <input name="picID" value="<?echo $id?>" hidden="true"></input>
                   </div>
                   <div class="form-group">
                     <input type="submit" value="Post Comment" class="btn btn-primary" id="post-comment">
