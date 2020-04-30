@@ -518,15 +518,3 @@ $('#registerEmail').click(function()
 
             
      });
-
-
-
-
-     /**
-      * GO TO COMMENTS FUNCTION 
-      * 
-      */
-     $(document).ready(function()
-     {
-
-     });

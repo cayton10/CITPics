@@ -610,8 +610,7 @@ figure figcaption {
 }
 
 .comment-list li .comment-body {
-  float: right;
-  width: calc(100% - 80px);
+
 }
 
 .comment-list li .comment-body h3 {

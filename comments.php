@@ -1,6 +1,63 @@
 <?
 require_once('dbConfig/config.php');
 require_once("header.php");
+//On page load, query DB
+//Get user's name
+
+//Set up image id for DB query
+$id = htmlspecialchars(trim($_GET['id']));
+//First fire query to get appropriate image and user who uploaded.
+$query = "SELECT p_Filename, 
+                 u_FName, 
+                 u_LName 
+          FROM   pic p
+          JOIN   user u 
+          ON p.u_ID = u.u_ID 
+          WHERE p_ID=$id";
+       //Prep stmt
+       $stmt = $db->prepare($query);
+       $stmt->bind_param("i", $id);
+       $stmt->execute();
+       //Store result of query
+       
+       $stmt->store_result();
+       //Bind results on success
+       $stmt->bind_result($picFileName, $userFirst, $userLast);
+       $stmt->fetch();
+       
+       $name = array($userFirst, $userLast);
+       $fullName = implode(" ", $name);
+
+//Second, fire query to get all comments in DESC order
+$query = "SELECT c_ID, 
+                 c_Text,
+                 c_Date
+          FROM comment
+          WHERE p_ID=$id
+          ORDER BY c_Date DESC";
+          
+
+          $stmt = $db->prepare($query);
+
+          $stmt->bind_param("i", $id);
+          $stmt->execute();
+
+          //Store results of query
+          $stmt->store_result();
+          
+          $total = $stmt->num_rows;
+          //Bind results
+          $stmt->bind_result($commentID, $comment, $commentDate);
+          //Run while loop to store results of comment query
+          while($stmt->fetch())
+            {
+                //Define an index variable and assign
+                //Dump emails into allEmail array for output on success
+                $allComments[] = array("c_ID"=>$commentID,
+                                "c_Text"=>$comment, 
+                                "c_Date"=>$commentDate);                          
+            }
+
 ?>
     <main id="main">
       
@@ -23,42 +80,59 @@ require_once("header.php");
             <div class="row mb-5 justify-content-around">
               <div class="col-12 col-sm-8">
                 <!-- IMAGE FROM FEED TO COMMENT ON -->
-                <figure><img src="img/img_1.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
-                  <figcaption>Image to be commented on</figcaption></figure>
+                <figure><img src="../../uploads/<?echo $picFileName?>" alt="Free Website Template by Free-Template.co" class="img-fluid">
+                  <figcaption>Photo uploaded by: <? echo $fullName;?> </figcaption></figure>
               </div>
             </div>
             
 
-       <!-- PHOTO COMMENTS -->   
-            <div class="pt-5">
-              <h3 class="mb-5 comment-count">3 Total Comments</h3>
-              <ul class="comment-list">
-                <li class="comment">
-                  <div class="comment-body">
-                    <h3 class="userName comment">Yoda</h3>
-                    <div class="meta">February 6, 2020 at 6:40pm</div>
-                    <p>Do or do not. There is no try.</p>
-                    
-                  </div>
-                </li>
+       <!-- PHOTO COMMENTS -->
+          <div class="pt-5">
+            <?php
+            //If there are no comments... 
+              if(empty($allComments))
+              {
+                //Output this:
+                echo "<h3 class='mb-5 comment-count'>Be the first to comment!</h3>"; 
+              }
+              else
+              {
+                //Output elements and loop through all comment info.
+                echo "<h3 class='mb-5 comment-count'>" . $total . " " . " Total Comments</h3>
+                        <ul class='comment-list'>";
+                          
+                echo "<br/>";
+                //For loop to access individual comments
+                for ($i=0; $i < $allComments[$i]; $i++) {
 
-                <li class="comment">
-                  <div class="comment-body">
-                    <h3 class="userName comment">Brian Morgan</h3>
-                    <div class="meta">February 6, 2020 at 6:39pm</div>
-                    <p>Try harder.</p>
-                    
-                  </div>
-                </li>
+                  //For each to access comment data
+                  foreach ($allComments[$i] as $key => $value) {
+                    //Use variable variables to give access to key name
+                    //outside of foreach.
+                    $$key = $value;
+                    $$key = $value;
+                    $$key = $value;
+                  }
+                  //Make date real pretty
 
-                <li class="comment">
-                  <div class="comment-body">
-                    <h3 class="userName comment">Jean Doe</h3>
-                    <div class="meta">January 9, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                  </div>
-                </li>
-              </ul>
+                  $date = date('m.d.Y  @  g:i a', strtotime($c_Date));
+
+
+                  //OUTPUT COMMENT INFORMATION 
+                  echo "<li class='comment'>
+                          <div class='comment-body'>
+                            <h3 class=userName comment> Comment:</h3>
+                              <div class='meta'>" . $date . "</div>
+                                <p>" . $c_Text . "</p>
+                          </div>
+                        </li>";
+
+                }
+                //FINISH OFF OUR UNORDERED LIST
+                echo "</ul>";
+              }
+              ?>
+
               <!-- END comment-list -->
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5 comment-count">Leave a comment</h3>

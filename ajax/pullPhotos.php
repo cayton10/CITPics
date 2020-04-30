@@ -11,7 +11,8 @@
     //if($_SERVER['REQUEST_METHOD'] == 'POST')
     //{
         //Query pic table to load all picture information as JSON
-        $query = "SELECT * FROM pic";
+        //Use DESC  and ORDER BY to show most recent uploads. 
+        $query = "SELECT * FROM pic ORDER BY p_Upload DESC";
 
 
         //Prep stmt
