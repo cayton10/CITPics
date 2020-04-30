@@ -136,14 +136,14 @@ $query = "SELECT c_ID,
               <!-- END comment-list -->
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5 comment-count">Leave a comment</h3>
-                <form action="ajax/postComment.php" method="POST" id="commentForm">
+                <form action="" id="commentForm">
                   <div class="form-group">
                     <label for="message">Message</label>
                     <textarea name="commentBody" id="message" cols="30" rows="10" class="form-control summary"></textarea>
                     <input name="picID" value="<?echo $id?>" hidden="true" id="picID"></input>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn btn-primary" id="post-comment">
+                    <input type="button" value="Post Comment" class="btn btn-primary" id="post-comment">
                   </div>
                 </form>
               </div>

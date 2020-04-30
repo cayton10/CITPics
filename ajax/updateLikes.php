@@ -23,16 +23,16 @@
     if($result)
     {
         $response['success'] = true;
-        $response['message'] = "Likes updated successfully.";
+        $response['message'] .= "Likes updated successfully.";
     }
     else
     {
       $response['success'] = false;
-      $response['error'] = 'Something was wrong with the query';
+      $response['error'] .= 'Something was wrong with the query';
     }
     //Set header and return json
     header('Content-Type: application/json');
-    die(json_encode($response));
+    echo(json_encode($response));
   }
   else
   {

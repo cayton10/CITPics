@@ -22,9 +22,7 @@ $(document).ready(function(){
 
 /* ------------------------- PREPEND COMMENT FUNCTION ------------------------ */
 
-$('#commentForm').submit(function(){
-    
-    preventDefault();
+$('#post-comment').click(function(e){
     //STOP NORMAL FORM SUBMISSION FOR jQuery HANDLING
 
     //GET DATE FUNCTIONS AND ASSIGN TO VARIABLES
@@ -55,29 +53,13 @@ $('#commentForm').submit(function(){
 
         minutes = '0' + minutes;
 
-
-    
     //STORE LONG MONTH, DAY, YEAR
     var dateStr = month + "." + date + "." + year + " @ " + hours + ":" + minutes + " " + mornEve;
    
-    //POSTS USER COMMENT AND WRAPS COMMENT APPROPRIATELY
-    //ASSIGN TEXT AREA CONTENT TO VAR $NEWCOMMENT
-    $newComment = $('<p>' + $('#message').val() + '</p>');
-    //PREPEND DATE
-    $($newComment).prepend('<div class="meta">' + dateStr + '</div>');
-    //PREPEND USERNAME
-    $($newComment).prepend('<h3 class="userName comment">Comment:</h3>');
-    //APPEND CONTENT OF NEW ELEMENT TO COMMENT LIST
-    $('.comment-list').prepend($newComment.hide());
-
-    $newComment.wrap('<li class="comment"></li>').wrap('<div class="comment-body"></div>'); 
-        //ANIMATE COMMENT POSTING *THANKS BRIAN*
-        $newComment.show(400);
-
-    
-
+    var newComment = $('#message').val();
+    var picID = $('#picID').attr('value');
     //IF COMMENT TEXT AREA IS NOT EMPTY AND SUBMIT BUTTON IS CLICKED,    
-   /**  if($('#message').val() != '')
+     if($('#message').val() != '')
     {
         //GRAB p_ID FROM HIDDEN INPUT FIELD
         var picID = $('#picID').val();
@@ -86,23 +68,32 @@ $('#commentForm').submit(function(){
                 url: "ajax/postComment.php",
                 dateType: "json",
                 method: "POST",
-                data: {c_Text: $newComment, p_ID: picID},
+                data: {c_Text: newComment, p_ID: picID},
                 success: function(response)
                 {
                     if(response.success)
                     {
-                        console.log(response.message);
-                        //ANIMATE SCROLL TO VIEW COMMENT AT TOP OF LIST UPON SUBMISSION
-                        if($('#message').val() != '')
-                        $('html, body').animate({
-                            scrollTop: $('#commentPhoto').offset().top
-                        }, 500);
-                    
+                        console.log(response);
+                        console.log("It worked!");
+                        //POSTS USER COMMENT AND WRAPS COMMENT APPROPRIATELY
+                        //ASSIGN TEXT AREA CONTENT TO VAR $NEWCOMMENT
+                        newComment = $('<p>' + newComment + '</p>');
+                        //PREPEND DATE
+                        $(newComment).prepend('<div class="meta">' + dateStr + '</div>');
+                        //PREPEND USERNAME
+                        $(newComment).prepend('<h3 class="userName comment">Comment:</h3>');
+                        //APPEND CONTENT OF NEW ELEMENT TO COMMENT LIST
+                        $('.comment-list').prepend(newComment.hide());
+
+                        newComment.wrap('<li class="comment"></li>').wrap('<div class="comment-body"></div>'); 
+                            //ANIMATE COMMENT POSTING *THANKS BRIAN*
+                            newComment.show(400);
+                        //RESET TEXT AREA VALUE AFTER SUCCESS 
+                            $('#message').val('');
                     
                     }
                     else
-                    
-                        console.log(response.error);
+                        console.log(response);
                     
                 },
                 error: function()
@@ -112,10 +103,16 @@ $('#commentForm').submit(function(){
                 
             }
         )
-    }*/
+    }
+
+    //ANIMATE SCROLL TO VIEW COMMENT AT TOP OF LIST UPON SUBMISSION
+    if($('#message').val() != '')
+    $('html, body').animate({
+        scrollTop: $('#commentPhoto').offset().top
+    }, 500);
     
-    //RESET TEXT AREA VALUE AFTER SUBMISSION
-    $('#message').val('');
+    
+    
 
 });
 
