@@ -2,7 +2,7 @@
   session_start();
   require_once('../dbConfig/config.php');
 
-  //if(!empty($_POST))
+  if(!empty($_POST))
   {
     //If posted from Registration form, add user to DB
     //Create local variables from $_POST field
@@ -60,6 +60,6 @@
 
 }
 
-//else
-//header('location: ../comments.php');
+else
+header('location: ../comments.php');
 ?>

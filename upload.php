@@ -2,6 +2,10 @@
   session_start();
   require_once('dbConfig/config.php');
   require_once('header.php');
+  if(!isset($_SESSION['name']))
+  {
+    header('location:index.php');
+  }
 ?>
 
   <div class="site-wrap">

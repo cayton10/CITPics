@@ -8,8 +8,8 @@
      * IF THE REQUEST METHOD SENT TO THIS PAGE IS OF TYPE 'POST', PULL
      * PHOTO INFORMATION AND STORE AS JSON. 
      */
-    //if($_SERVER['REQUEST_METHOD'] == 'POST')
-    //{
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
         //Query pic table to load all picture information as JSON
         //Use DESC  and ORDER BY to show most recent uploads. 
         $query = "SELECT * FROM pic ORDER BY p_Upload DESC";
@@ -51,10 +51,10 @@
         //Return pics array as JSON
         echo json_encode($allPics);
 
-    //}
+    }
     /**IF REQUEST TYPE IS NOT POST, REDIRECT TO REGISTRATION PAGE */
-    //else
-    //{
-      //  header('location:../register.php');
-    //}
+    else
+    {
+        header('location:../register.php');
+    }
 ?>

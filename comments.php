@@ -3,6 +3,10 @@ require_once('dbConfig/config.php');
 require_once("header.php");
 //On page load, query DB
 //Get user's name
+if(!isset($_SESSION['name']))
+{
+  header('location:index.php');
+}
 
 //Set up image id for DB query
 $id = htmlspecialchars(trim($_GET['id']));

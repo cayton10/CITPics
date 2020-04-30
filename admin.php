@@ -3,7 +3,7 @@
     require_once('header.php');
     require_once('php_scripts/print_Users.php');
 
-    if(!isset($_SESSION['name']) || $_SESSION['isAdmin'] != 1)
+    if(!isset($_SESSION['name']) && $_SESSION['isAdmin'] != 1)
     {
         header('location:index.php');
     }
@@ -110,8 +110,4 @@ require_once("footer.php");
 </body>
 
 </html>
-<?
 
-    require_once('footer.php');
-
-?>

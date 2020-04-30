@@ -1,5 +1,13 @@
 <?
   session_start();
+  if(isset($_SESSION['name']) && $_SESSION['isAdmin'] == 0)
+  {
+    header('location:feed.php');
+  }
+  else if(isset($_SESSION['name']) && $_SESSION['isAdmin'] == 1)
+  {
+    header('location:admin.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

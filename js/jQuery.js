@@ -575,3 +575,96 @@ $('#registerEmail').click(function()
 
             
      });
+
+
+     /**ADMIN TRIGGER
+      * THIS FUNCTION WORKS SIMILARLY TO THE GALLERY FUNCTION
+      * WHERE A HIDDEN DIV IS TRIGGERED TO DISPLAY ALL IMAGES
+      * ONLY THESE IMAGES ARE RESTRICTED TO THE USER THE ADMIN
+      * HAS SELECTED.
+      */
+     $(document).ready(function()
+     {
+        
+            //Gallery trigger function. On click, run ajax call to php script which all pic
+            //values for the defined user. 
+            $('#adminTrigger').click(function()
+              {
+                  //Create ajax call to call pullPhotos.php script
+                  //Grab user ID from hidden form field.
+                  var id = $('#userID').val();
+              $.ajax(
+                  {
+                      url: "ajax/adminInspect.php",
+                      dataType: "json",
+                      method: "POST",
+                      data: {u_ID: id},
+                      success: function(data)
+                      {      
+                          //Loop through all photos and output to DOM
+                          $.each(data, function(key, value)
+                          {
+                          
+                              //Declare pics info variables to easily output info
+                              //Grab all pertinent pics info for admin and commenting
+                              var photo = value.p_Filename;
+  
+                              //Append required HTML elements for complete post
+                              //Include all required pics information
+                              $('#postOutput').append(
+                                  "<div class='col-12 col-sm-6 col-md-4 col-lg-3'>\
+                                      <div class='post-entry'>\
+                                          <!-- IMAGE SPACE AND LINK TO FULL IMAGE POPUP -->\
+                                          <div class='photo'>\
+                                              <a href='../../uploads/" + photo + "' data-fancybox class='d-block mb-4 img '" + picId + " alt='click to blow up'>\
+                                                  <img src='../../uploads/" + photo + "' alt='Image' class='img-fluid post'>\
+                                              </a>\
+                                          </div>\
+                                          <!-- SOCIAL ROW -->\
+                                          <div class='row-fluid justify-content-between align-content-center social'>\
+                                          <!-- LIKE BUTTON APERTURE -->\
+                                          <div class='col-3 like-button'>\
+                                              <button class='like_button' class='text-center' type='submit'><img src='img/empty_aperture.svg' class='img-fluid empty-aperture' data-id='"+ picId +"'alt='like button'/>\
+                                              Like</button>\
+                                          </div>\
+                                          <!-- END LIKES -->\
+                                          \
+                                          <!-- COMMENT UTILITY LINK -->\
+                                          <div class='col-3 comment'>\
+                                              <a href='comments.php?id=" + picId + "' class='d-block mb-4 img' alt='click to comment'>\
+                                                  <img src='img/comment.svg' class='img-fluid comment_button' alt='comment button'/>\
+                                              </a>\
+                                          </div>\
+                                          <!-- END COMMENT UTILITY LINK -->\
+                                          \
+                                          <!-- LIKES COUNTER -->\
+                                              <div class='col-6 likes'>\
+                                                  <p class=likes><span id='" + picId + "'>" + likes + "</span> likes</p>\
+                                              </div>\
+                                          <!-- END LIKES COUNTER -->\
+                                              </div>\
+                                          <!-- IMAGE SUMMARY -->\
+                                              <div class='row-fluid align-content-center image-summary'>\
+                                              <p class='image_summary'>" + summary + "</p>\
+                                              </div>\
+                                          <!-- END IMAGE SUMMARY ROW -->\
+                                          \
+                                          </div>\
+                                      </div>"
+                              )
+                              
+                          });
+                              
+                              
+                      },
+                      //If error with ajax call, alert user.
+                      error: function(data)
+                      {
+                          alert("Error in pullPhoto ajax call");
+                      }
+                  }
+                  )
+              });
+              //Trigger gallery Trigger which is only present in feed.php
+            $('#adminTrigger').trigger('click');
+     });
