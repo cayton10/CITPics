@@ -249,8 +249,25 @@ $query = "SELECT c_ID,
 
 ##### 4.30.2020
 
+Had a lot of trouble with my SQL select statements due to just outright DUMB mistakes. I.E. including commas in datatype for the query (i,s,s,i) <- DON'T DO THAT!
+
+Comments work well. Auto scroll function added so the user will automatically be thrown back up to the top of comments after entering theirs. 
+
 #### Time
     Come back and fix time variable. The time that's being inserted into the DB is in UTC for photo uploads, comments, etc. After having messed around with and storing valid times in jQuery/JS, I think it would be best to grab those values, store them in variables and pass them along to the DB on submission. This should solve the timezone problem.
+
+### Admin
+
+##### 4.30.2020
+
+Added an admin page that returns all users in a table. Did this with outputs through PHP. Tied a link to url for each user at their u_ID field in the ouput table. Clicking this userID will take the admin to a dynamically generated page which lists the user's name in the hero banner as well as all of their posts to date. 
+
+Added a delete button under each photo, but the styling is kind of a nightmare. When I'm not so frazzled I'll go back and fix it. 
+
+
+## Outstanding Issues:
+
+### Add a Cookie 
 
 
 
