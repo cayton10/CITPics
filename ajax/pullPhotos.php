@@ -35,8 +35,8 @@
             $stmt->bind_result($picID, $picFileName, $picTitle, $picSummary, $picUpTime, $picLikes, $userID);
             while($stmt->fetch())
             {
-                //Define an index variable and assign
-                //Dump emails into allEmail array for output on success
+                //Define index variables and assign
+                //Dump pic table information into array for JSON output
                 $allPics[] = array("p_ID"=>$picID,
                                 "p_Filename"=>$picFileName, 
                                 "p_Title"=>$picTitle, 

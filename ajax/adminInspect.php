@@ -8,14 +8,15 @@
      * IF THE REQUEST METHOD SENT TO THIS PAGE IS OF TYPE 'POST', PULL
      * PHOTO INFORMATION AND STORE AS JSON. 
      */
-    //if($_SERVER['REQUEST_METHOD'] == 'POST')
-    //{
+   
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
         $id = htmlspecialchars(trim($_POST['u_ID']));
         //First fire query to get appropriate image and user who uploaded.
         $query = "SELECT p_ID,
                          p_Filename 
                   FROM   pic
-                  WHERE u_ID=52";
+                  WHERE u_ID=$id";
 
 
         //Prep stmt
@@ -25,7 +26,8 @@
         //Store result of query
 
         $stmt->store_result();
-        //Return error handling in JSON
+        //Return error handling in JSON array
+        $allPics = [];
         if($stmt->num_rows == 0)
         {
             $allPics['success'] = false;
@@ -35,27 +37,25 @@
         {
            //Bind results on success
             $stmt->bind_result($picID, $filename);
-            print_r($stmt);
-            
-            while($stmt->fetch());
+            while($stmt->fetch())
                 {
                     //Dump all photos into array
                     $allPics[] = array("p_ID"=>$picID,
                                         "p_Filename"=>$filename);
-                    echo $picID . "<br />";
-                    echo $filename . "<br />";
-                                        
                 }
+            $allPics['success'] = true;
+            $allPics['message'] = "All pics from user # " . $id;
 
         }
 
-        //Return pics array as JSON
+        //Set header with appropriate json information... lick the stamp, and send it
+        header('Content-Type: application/json');
         echo json_encode($allPics);
 
-    //}
+    }
     /**IF REQUEST TYPE IS NOT POST, REDIRECT TO REGISTRATION PAGE */
-    //else
-    //{
-      //  header('location:../register.php');
-    //}
+    else
+    {
+        header('location:../register.php');
+    }
 ?>

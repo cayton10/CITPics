@@ -42,78 +42,9 @@ $query = "SELECT u_FName,
       <div class="container">
         <div class="row justify-content-around">
           <div class="col-md-10 blog-content">
-            <div class="row mb-5 justify-content-around">
-              <div class="col-12 col-sm-8">
-                <!-- LIST ALL USER IMAGES -->
-                <figure><img src="../../uploads/<?echo $filename?>" alt="Free Website Template by Free-Template.co" class="img-fluid" id="commentPhoto">
-                  <figcaption>Photo uploaded by: <? echo $fullName;?> </figcaption></figure>
-              </div>
+            <div class="row mb-5 justify-content-around" id="userPosts">
+              <input name="userID" value="<?echo $id?>" hidden="true" id="userID"></input>
             </div>
-            
-
-       <!-- PHOTO COMMENTS -->
-          <div class="pt-5">
-            <?php
-            //If there are no comments... 
-              if(empty($allComments))
-              {
-                //Output this:
-                echo "<h3 class='mb-5 comment-count'>Be the first to comment!</h3>"; 
-              }
-              else
-              {
-                //Output elements and loop through all comment info.
-                echo "<h3 class='mb-5 comment-count'>" . $total . " " . " Total Comments</h3>
-                        <ul class='comment-list' id='commentList'>";
-                          
-                echo "<br/>";
-                //For loop to access individual comments
-                for ($i=0; $i < $allComments[$i]; $i++) {
-
-                  //For each to access comment data
-                  foreach ($allComments[$i] as $key => $value) {
-                    //Use variable variables to give access to key name
-                    //outside of foreach.
-                    $$key = $value;
-                    $$key = $value;
-                    $$key = $value;
-                  }
-                  //Make date real pretty
-
-                  $date = date('n.d.Y  @  g:i a', strtotime($c_Date));
-
-
-                  //OUTPUT COMMENT INFORMATION 
-                  echo "<li class='comment'>
-                          <div class='comment-body'>
-                            <h3 class='userName comment'>Comment:</h3>
-                              <div class='meta'>" . $date . "</div>
-                                <p>" . $c_Text . "</p>
-                          </div>
-                        </li>";
-
-                }
-                //FINISH OFF OUR UNORDERED LIST
-                echo "</ul>";
-              }
-              ?>
-
-              <!-- END comment-list -->
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5 comment-count">Leave a comment</h3>
-                <form action="" id="commentForm">
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="commentBody" id="message" cols="30" rows="10" class="form-control summary"></textarea>
-                    <input name="picID" value="<?echo $id?>" hidden="true" id="userID"></input>
-                  </div>
-                  <div class="form-group">
-                    <input type="button" value="Post Comment" class="btn btn-primary" id="post-comment">
-                  </div>
-                </form>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
