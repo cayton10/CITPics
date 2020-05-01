@@ -629,7 +629,7 @@ $('#registerEmail').click(function()
                                                     </div>\
                                                 </div>\
                                                 <div class='row'>\
-                                                    <button class='delete btn-primary col-6' id='delete' value='Delete'>Delete</button>\
+                                                    <button class='delete btn-primary col-2 text-center' id='delete' value='Delete'>Delete</button>\
                                                 </div>\
                                             </div>"
                                         )
