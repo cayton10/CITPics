@@ -117,11 +117,6 @@ $('#post-comment').click(function(e){
 });
 
 
-
-
-
-
-
     /**REGISTRATION FORM ERROR HANDLING AND FIELD VALIDATION
      * 
      * 

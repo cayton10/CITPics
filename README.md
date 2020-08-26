@@ -269,6 +269,9 @@ Added a delete button under each photo, but the styling is kind of a nightmare. 
 
 ### Add a Cookie 
 
+### Complete Admin page for deleting photos
+
+
 
 
 
